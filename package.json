@@ -1,0 +1,19 @@
+{
+  "name": "en-precio",
+  "version": "1.0.0",
+  "description": "Properties plataform",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maxi326519/en-precio.git"
+  },
+  "author": "Maximiliano garcia",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maxi326519/en-precio/issues"
+  },
+  "homepage": "https://github.com/maxi326519/en-precio#readme"
+}
