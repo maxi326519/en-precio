@@ -1,0 +1,8 @@
+.filter {
+  position: stickyÏ;
+  z-index: 1000;
+  width: 100%;
+  padding: 20px;
+  border-bottom: 1px solid #4444;
+  border-radius: 5px;
+}

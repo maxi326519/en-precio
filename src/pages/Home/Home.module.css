@@ -1,3 +1,29 @@
-.home{
-  
+.home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.home {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-image: url("../../assets/img/Captura\ de\ pantalla\ 2024-02-23\ a\ la\(s\)\ 18.09.50.png");
+  background-size: cover;
+  background-position: center;
+}
+
+.form {
+  display: flex;
+  gap: 10px;
+}
+
+.form input {
+  width: 600px;
+}
+
+.form button {
+  width: 50px;
 }
