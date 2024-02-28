@@ -1,12 +1,8 @@
+import usePlacesAutocomplete, { getGeocode } from "use-places-autocomplete";
 import { useEffect } from "react";
-import usePlacesAutocomplete, {
-  getGeocode,
-  getLatLng,
-} from "use-places-autocomplete";
-
-import Input from "../../../../../../../component/Inputs/Input";
 
 import styles from "./PlaceAutocomplete.module.css";
+import Input from "../Inputs/Input";
 
 interface Props {
   location: string;
@@ -16,7 +12,6 @@ interface Props {
 
 const PlacesAutocomplete = ({ location, error, setLocation }: Props) => {
   const {
-    ready,
     value,
     suggestions: { status, data },
     setValue,
@@ -36,7 +31,8 @@ const PlacesAutocomplete = ({ location, error, setLocation }: Props) => {
     setValue(e.target.value);
   };
 
-  const handleSelect = ({ description }: any) =>
+  const handleSelect =
+    ({ description }: { description: string }) =>
     () => {
       // When the user selects a place, we can replace the keyword without request data from API
       // by setting the second parameter to "false"
@@ -46,16 +42,17 @@ const PlacesAutocomplete = ({ location, error, setLocation }: Props) => {
       // Get latitude and longitude via utility functions
       getGeocode({ address: description })
         .then((results) => {
-/*           const { lat, lng } = getLatLng(results[0]);
+          /*           const { lat, lng } = getLatLng(results[0]);
           console.log("📍 Coordinates: ", { lat, lng });
           console.log(results);
           console.log(results[0].formatted_address!); */
 
           // Save adress
           setLocation(results[0].formatted_address || "");
-        }).catch((error: Error) => {
-          console.log(error.message);
         })
+        .catch((error: Error) => {
+          console.log(error.message);
+        });
     };
 
   const renderSuggestions = () =>
@@ -81,7 +78,9 @@ const PlacesAutocomplete = ({ location, error, setLocation }: Props) => {
         error={error}
         handleChange={handleInput}
       />
-      {status === "OK" && <ul className={styles.dropBox}>{renderSuggestions()}</ul>}
+      {status === "OK" && (
+        <ul className={styles.dropBox}>{renderSuggestions()}</ul>
+      )}
     </div>
   );
 };
