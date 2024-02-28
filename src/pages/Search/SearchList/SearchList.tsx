@@ -6,6 +6,7 @@ import Filters from "../../../components/Filters/Filters";
 import Pagination from "../../../components/Pagination/Pagination";
 import SearchRow from "./SearchRow/SearchRow";
 import Navbar from "../../../components/Navbar/Navbar";
+import { Link } from "react-router-dom";
 
 export default function SearchList() {
   const [data, setData] = useState([
@@ -40,6 +41,7 @@ export default function SearchList() {
       <Navbar opaque={true} />
       <Filters />
       <div className={styles.list}>
+        <Link to="/search-maps">Ver Mapa</Link>
         {data.map((data) => (
           <SearchRow data={data} handleToggleFavorite={handleToggleFavorite} />
         ))}

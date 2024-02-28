@@ -1,0 +1,29 @@
+.container {
+  position: relative;
+}
+
+.dropBox {
+  position: absolute;
+  top: 60px;
+  width: 100%;
+  padding: 0;
+  list-style: none;
+  border-radius: 5px;
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 10px 5px #0002;
+  background-color: white;
+}
+
+.dropBox li {
+  cursor: pointer;
+  padding: 5px 10px;
+}
+
+.dropBox li small {
+  color: #888;
+}
+
+.dropBox li:hover {
+  cursor: pointer;
+  background-color: #0002;
+}
