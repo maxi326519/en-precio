@@ -1,0 +1,29 @@
+.about {
+  padding-top: var(--navbar-height);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+}
+
+.content h1 {
+  font-size: 50px;
+  font-weight: bold;
+}
+
+.content p {
+  margin-top: 50px;
+  width: 600px;
+}
+
+.wave {
+  position: absolute;
+  z-index: 500;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}

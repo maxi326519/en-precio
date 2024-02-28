@@ -10,6 +10,8 @@ import SearchMaps from "./pages/Search/SearchMaps/SearchMaps";
 import styles from "./App.module.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
+import ContactForm from "./pages/ContactForm/ContactForm";
+import AboutUs from "./pages/AboutUs/AboutUs";
 
 function App() {
   return (
@@ -19,8 +21,10 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/singup" element={<Singup />} />
         <Route path="/search" element={<SearchList />} />
-        <Route path="/search-maps" element={<SearchMaps/>} />
+        <Route path="/search-maps" element={<SearchMaps />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/form" element={<ContactForm />} />
+        <Route path="/about" element={<AboutUs />} />
       </Routes>
     </div>
   );

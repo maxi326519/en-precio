@@ -1,6 +1,9 @@
 import { useState } from "react";
 
 import styles from "./Singup.module.css";
+import logo from "../../assets/img/logo.png";
+import homeWave from "../../assets/svg/home-wave.svg";
+import { Link, useNavigate } from "react-router-dom";
 
 interface SingupData {
   name: string;
@@ -39,6 +42,7 @@ const initError = (): Error => ({
 });
 
 export default function Singup() {
+  const redirect = useNavigate();
   const [error, setError] = useState(initError());
   const [user, setUser] = useState(initSingupData());
 
@@ -91,8 +95,10 @@ export default function Singup() {
       value = false;
     }
 
+    value = true;
+
     // Set error and return the value
-    setError(error);
+    // setError(error);
     return value;
   }
 
@@ -100,110 +106,120 @@ export default function Singup() {
     event.preventDefault();
     if (handleValidations()) {
       // Singup code
+      redirect("/");
     }
   }
 
   return (
     <div className={styles.sesion}>
-      <form onSubmit={handleSubmit}>
-        <h2>Registrarse</h2>
+      <form className={styles.form} onSubmit={handleSubmit}>
+        <img src={logo} alt="logo" />
+        <div className={styles.container}>
+          <h2>Registrarse</h2>
 
-        {/* NAME */}
-        <div className="form-floating mb-3">
-          <input
-            id={error.name ? "floatingInputInvalid" : "user"}
-            type="text"
-            name="name"
-            value={user.name}
-            className={`form-control ${!error.name ? "" : "is-invalid"}`}
-            placeholder="Nombre"
-            onChange={handleChange}
-          />
-          <label htmlFor="floatingInput">Nombre</label>
-          {!error.name ? null : <small>{error.name}</small>}
+          {/* NAME */}
+          <div className="form-floating mb-3">
+            <input
+              id={error.name ? "floatingInputInvalid" : "user"}
+              type="text"
+              name="name"
+              value={user.name}
+              className={`form-control ${!error.name ? "" : "is-invalid"}`}
+              placeholder="Nombre"
+              onChange={handleChange}
+            />
+            <label htmlFor="floatingInput">Nombre</label>
+            {!error.name ? null : <small>{error.name}</small>}
+          </div>
+
+          {/* SURNAME */}
+          <div className="form-floating mb-3">
+            <input
+              id={error.surname ? "floatingInputInvalid" : "user"}
+              type="text"
+              name="surname"
+              value={user.surname}
+              className={`form-control ${!error.surname ? "" : "is-invalid"}`}
+              placeholder="Telefono"
+              onChange={handleChange}
+            />
+            <label htmlFor="floatingInput">Apellido</label>
+            {!error.surname ? null : <small>{error.surname}</small>}
+          </div>
+
+          {/* PHONE */}
+          <div className="form-floating mb-3">
+            <input
+              id={error.phone ? "floatingInputInvalid" : "user"}
+              type="tel"
+              name="phone"
+              value={user.phone}
+              className={`form-control ${!error.phone ? "" : "is-invalid"}`}
+              placeholder="Telefono"
+              onChange={handleChange}
+            />
+            <label htmlFor="floatingInput">Telefono</label>
+            {!error.phone ? null : <small>{error.phone}</small>}
+          </div>
+
+          {/* EMAIL */}
+          <div className="form-floating mb-3">
+            <input
+              type="email"
+              name="email"
+              value={user.email}
+              className={`form-control ${!error.email ? "" : "is-invalid"}`}
+              id={error.email ? "floatingInputInvalid" : "user"}
+              placeholder="E-mail"
+              onChange={handleChange}
+            />
+            <label htmlFor="floatingInput">Email</label>
+            {!error.email ? null : <small>{error.email}</small>}
+          </div>
+
+          {/* PASSWORD */}
+          <div className="form-floating mb-3">
+            <input
+              type="password"
+              name="password"
+              value={user.password}
+              className={`form-control ${!error.password ? "" : "is-invalid"}`}
+              id={error.password ? "floatingInputInvalid" : "pass"}
+              placeholder="Contraseña"
+              onChange={handleChange}
+            />
+            <label htmlFor="floatingInput">Contraseña</label>
+            {!error.password ? null : <small>{error.password}</small>}
+          </div>
+
+          {/* REPEAT PASSWORD */}
+          <div className="form-floating mb-3">
+            <input
+              type="password"
+              name="repeatPassword"
+              value={user.repeatPassword}
+              className={`form-control ${
+                !error.repeatPassword ? "" : "is-invalid"
+              }`}
+              id={error.repeatPassword ? "floatingInputInvalid" : "pass"}
+              placeholder="Repetir la contraseña"
+              onChange={handleChange}
+            />
+            <label htmlFor="floatingInput">Repetir la contraseña</label>
+            {!error.repeatPassword ? null : (
+              <small>{error.repeatPassword}</small>
+            )}
+          </div>
+
+          <button className="btn btn-primary" type="submit">
+            Registrarse
+          </button>
         </div>
-
-        {/* SURNAME */}
-        <div className="form-floating mb-3">
-          <input
-            id={error.surname ? "floatingInputInvalid" : "user"}
-            type="text"
-            name="surname"
-            value={user.surname}
-            className={`form-control ${!error.surname ? "" : "is-invalid"}`}
-            placeholder="Telefono"
-            onChange={handleChange}
-          />
-          <label htmlFor="floatingInput">Apellido</label>
-          {!error.surname ? null : <small>{error.surname}</small>}
-        </div>
-
-        {/* PHONE */}
-        <div className="form-floating mb-3">
-          <input
-            id={error.phone ? "floatingInputInvalid" : "user"}
-            type="tel"
-            name="phone"
-            value={user.phone}
-            className={`form-control ${!error.phone ? "" : "is-invalid"}`}
-            placeholder="Telefono"
-            onChange={handleChange}
-          />
-          <label htmlFor="floatingInput">Telefono</label>
-          {!error.phone ? null : <small>{error.phone}</small>}
-        </div>
-
-        {/* EMAIL */}
-        <div className="form-floating mb-3">
-          <input
-            type="email"
-            name="email"
-            value={user.email}
-            className={`form-control ${!error.email ? "" : "is-invalid"}`}
-            id={error.email ? "floatingInputInvalid" : "user"}
-            placeholder="E-mail"
-            onChange={handleChange}
-          />
-          <label htmlFor="floatingInput">Email</label>
-          {!error.email ? null : <small>{error.email}</small>}
-        </div>
-
-        {/* PASSWORD */}
-        <div className="form-floating mb-3">
-          <input
-            type="password"
-            name="password"
-            value={user.password}
-            className={`form-control ${!error.password ? "" : "is-invalid"}`}
-            id={error.password ? "floatingInputInvalid" : "pass"}
-            placeholder="Contraseña"
-            onChange={handleChange}
-          />
-          <label htmlFor="floatingInput">Contraseña</label>
-          {!error.password ? null : <small>{error.password}</small>}
-        </div>
-
-        {/* REPEAT PASSWORD */}
-        <div className="form-floating mb-3">
-          <input
-            type="password"
-            name="repeatPassword"
-            value={user.repeatPassword}
-            className={`form-control ${
-              !error.repeatPassword ? "" : "is-invalid"
-            }`}
-            id={error.repeatPassword ? "floatingInputInvalid" : "pass"}
-            placeholder="Repetir la contraseña"
-            onChange={handleChange}
-          />
-          <label htmlFor="floatingInput">Repetir la contraseña</label>
-          {!error.repeatPassword ? null : <small>{error.repeatPassword}</small>}
-        </div>
-
-        <button className="btn btn-primary" type="submit">
-          Iniciar sesion
-        </button>
+        <span className={styles.singupLink}>
+          ¿Ya estas registrado? <Link to="/login">Iniciar sesión</Link>
+        </span>
       </form>
+      <img className={styles.wave} src={homeWave} alt="wave" />
     </div>
   );
 }

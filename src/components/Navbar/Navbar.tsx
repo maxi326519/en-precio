@@ -39,20 +39,14 @@ export default function Navbar({ opaque }: Props) {
           />
         </header>
         <ul className={styles.menu}>
-          <li data-aos="fade-down" data-aos-delay="150" data-aos-duration="400">
-            <a href="#home" onClick={handleShowMenu}>
-              Home
-            </a>
+          <li>
+            <Link to="/">Home</Link>
           </li>
-          <li data-aos="fade-down" data-aos-delay="300" data-aos-duration="400">
-            <a href="#about" onClick={handleShowMenu}>
-              Sobre nosotros
-            </a>
+          <li>
+            <Link to="/about">Sobre nosotros</Link>
           </li>
           <li data-aos="fade-down" data-aos-delay="450" data-aos-duration="400">
-            <a href="#form" onClick={handleShowMenu}>
-              Contacto
-            </a>
+            <Link to="/form">Contacto</Link>
           </li>
         </ul>
         <ul className={styles.sesion}>

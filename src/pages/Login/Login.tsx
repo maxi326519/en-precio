@@ -1,6 +1,9 @@
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
-import "./Login.css";
+import styles from "./Login.module.css";
+import logo from "../../assets/img/logo.png";
+import homeWave from "../../assets/svg/home-wave.svg";
 
 interface LoginData {
   email: string;
@@ -23,6 +26,7 @@ const initError = (): Error => ({
 });
 
 export default function Login() {
+  const redirect = useNavigate();
   const [error, setError] = useState(initError());
   const [user, setUser] = useState(initLoginData());
 
@@ -50,8 +54,10 @@ export default function Login() {
       value = false;
     } // Add more validations
 
+    value = true;
+
     // Set error and return the value
-    setError(error);
+    // setError(error);
     return value;
   }
 
@@ -59,48 +65,56 @@ export default function Login() {
     event.preventDefault();
     if (handleValidations()) {
       // Login code
+      redirect("/");
     }
   }
 
   return (
-    <div className="sesion">
-      <form onSubmit={handleSubmit}>
-        <h2>Iniciar sesion</h2>
+    <div className={styles.sesion}>
+      <form className={styles.form} onSubmit={handleSubmit}>
+        <img src={logo} alt="logo" />
+        <div className={styles.container}>
+          <h2>Iniciar sesion</h2>
 
-        {/* EMAIL */}
-        <div className="form-floating mb-3">
-          <input
-            type="email"
-            name="email"
-            value={user.email}
-            className={`form-control ${!error.email ? "" : "is-invalid"}`}
-            id={error.email ? "floatingInputInvalid" : "user"}
-            placeholder="name"
-            onChange={handleChange}
-          />
-          <label htmlFor="floatingInput">Email</label>
-          {!error.email ? null : <small>{error.email}</small>}
+          {/* EMAIL */}
+          <div className="form-floating mb-3">
+            <input
+              type="email"
+              name="email"
+              value={user.email}
+              className={`form-control ${!error.email ? "" : "is-invalid"}`}
+              id={error.email ? "floatingInputInvalid" : "user"}
+              placeholder="name"
+              onChange={handleChange}
+            />
+            <label htmlFor="floatingInput">Email</label>
+            {!error.email ? null : <small>{error.email}</small>}
+          </div>
+
+          {/* CONTRASEÑA */}
+          <div className="form-floating mb-3">
+            <input
+              type="password"
+              name="password"
+              value={user.password}
+              className={`form-control ${!error.password ? "" : "is-invalid"}`}
+              id={error.password ? "floatingInputInvalid" : "pass"}
+              placeholder="Contraseña"
+              onChange={handleChange}
+            />
+            <label htmlFor="floatingInput">Contraseña</label>
+            {!error.password ? null : <small>{error.password}</small>}
+          </div>
+
+          <button className="btn btn-primary" type="submit">
+            Iniciar sesión
+          </button>
         </div>
-
-        {/* CONTRASEÑA */}
-        <div className="form-floating mb-3">
-          <input
-            type="password"
-            name="password"
-            value={user.password}
-            className={`form-control ${!error.password ? "" : "is-invalid"}`}
-            id={error.password ? "floatingInputInvalid" : "pass"}
-            placeholder="Contraseña"
-            onChange={handleChange}
-          />
-          <label htmlFor="floatingInput">Contraseña</label>
-          {!error.password ? null : <small>{error.password}</small>}
-        </div>
-
-        <button className="btn btn-primary" type="submit">
-          Iniciar sesion
-        </button>
+        <span className={styles.singupLink}>
+          ¿No estas registrado? <Link to="/singup">Registrarse</Link>
+        </span>
       </form>
+      <img className={styles.wave} src={homeWave} alt="wave" />
     </div>
   );
 }

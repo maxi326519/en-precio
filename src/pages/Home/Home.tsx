@@ -4,6 +4,7 @@ import { useState } from "react";
 import Input from "../../components/Inputs/Input";
 
 import styles from "./Home.module.css";
+import Navbar from "../../components/Navbar/Navbar";
 
 export default function Home() {
   const redirect = useNavigate();
@@ -19,16 +20,20 @@ export default function Home() {
 
   return (
     <div className={styles.home}>
+      <Navbar opaque={true} />
       <form className={styles.form} onSubmit={handleSubmit}>
-        <Input
-          name="search"
-          label="Busca tu propiedad"
-          value={search}
-          handleChange={handleChange}
-        />
-        <button className="btn btn-primary" onClick={handleSubmit}>
-          {">"}
-        </button>
+        <h2>BUSCA TU PROPIEDAD</h2>
+        <div className={styles.searchBar}>
+          <Input
+            name="search"
+            label="Ingresa una ubicacion"
+            value={search}
+            handleChange={handleChange}
+          />
+          <button className="btn btn-primary" onClick={handleSubmit}>
+            {">"}
+          </button>
+        </div>
       </form>
     </div>
   );
