@@ -1,6 +1,6 @@
 interface InputProps {
   name: string;
-  value: string;
+  value: string | number;
   label: string;
   type?: string;
   disabled?: boolean;
