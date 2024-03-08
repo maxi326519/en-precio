@@ -25,7 +25,7 @@ export default function SearchRow({ data, handleToggleFavorite }: Props) {
         <img src={img} alt="miniatura" />
       </div>
       <div className={styles.header}>
-        <span>US$ 200.000</span>
+        <span>Titulo</span>
         <button className={styles.contact}>Contactar</button>
         <button
           className={`${styles.favorite} ${
@@ -58,6 +58,9 @@ export default function SearchRow({ data, handleToggleFavorite }: Props) {
         <li>
           <img src={bathrooms} />
           <span>1 baño</span>
+        </li>
+        <li className={styles.price}>
+          <span>US$ 200.000</span>
         </li>
       </ul>
     </div>
