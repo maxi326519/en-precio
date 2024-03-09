@@ -7,7 +7,7 @@ import styles from "./Step4.module.css";
 interface Props {
   property: Property;
   error: PropertyError;
-  onChange: (property: Property) => void;
+  onChange: (property: Property, error: PropertyError) => void;
   onBack: () => void;
   onSubmit: () => void;
 }
@@ -23,7 +23,10 @@ export default function Step4({
   function handleChange(
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) {
-    onChange({ ...property, [event.target.name]: event.target.value });
+    onChange(
+      { ...property, [event.target.name]: event.target.value },
+      { ...error, [event.target.name]: "" }
+    );
   }
 
   return (

@@ -156,7 +156,7 @@ export const initProperty = (): Property => ({
   },
 });
 
-export const initPropertyError = () => ({
+export const initPropertyError = (): PropertyError => ({
   titulo: "",
   descripcion: "",
   ubicacion: "",
@@ -167,5 +167,8 @@ export const initPropertyError = () => ({
   dormitorios: "",
   price: "",
   predisposicion: "",
+  orientacion: "",
+  videoUrl: "",
+  video360Url: "",
   img: "",
 });

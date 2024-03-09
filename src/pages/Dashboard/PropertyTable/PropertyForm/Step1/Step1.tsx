@@ -1,12 +1,15 @@
-import Input from "../../../../../components/Inputs/Input";
 import { Property, PropertyError } from "../../../../../interfaces/Property";
+
+import Input from "../../../../../components/Inputs/Input";
+
 import styles from "./Step1.module.css";
 
 interface Props {
   property: Property;
   error: PropertyError;
-  onChange: (property: Property) => void;
+  onCancel: () => void;
   onNext: () => void;
+  onChange: (property: Property, error: PropertyError) => void;
 }
 
 export default function Step1({ property, error, onNext, onChange }: Props) {
@@ -14,7 +17,10 @@ export default function Step1({ property, error, onNext, onChange }: Props) {
   function handleChange(
     event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) {
-    onChange({ ...property, [event.target.name]: event.target.value });
+    onChange(
+      { ...property, [event.target.name]: event.target.value },
+      { ...error, [event.target.name]: "" }
+    );
   }
 
   return (
