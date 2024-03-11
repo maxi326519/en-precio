@@ -4,6 +4,7 @@
   flex-direction: column;
   border-radius: 10px;
   height: calc(100vh - 230px);
+  padding: 20px;
   overflow: hidden;
   background-color: #fff2;
 }

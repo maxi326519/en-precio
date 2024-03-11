@@ -3,6 +3,7 @@ import { Property, PropertyError } from "../../../../../interfaces/Property";
 import Input from "../../../../../components/Inputs/Input";
 
 import styles from "./Step1.module.css";
+import map from "../../../../../assets/img/maps.png";
 
 interface Props {
   property: Property;
@@ -24,54 +25,62 @@ export default function Step1({ property, error, onNext, onChange }: Props) {
   }
 
   return (
-    <div>
-      <form className={styles.form} onSubmit={onNext}>
-        <div className={styles.type}>
-          <button>Departamento</button>
-          <button>Casa</button>
-          <button>Terrenos</button>
+    <form className={styles.form} onSubmit={onNext}>
+      <div className={styles.type}>
+        <button type="button">Departamento</button>
+        <button type="button">Casa</button>
+        <button type="button">Terrenos</button>
+      </div>
+      <div className={styles.flex}>
+        <Input
+          name="ubicacion"
+          label="Ubicacion"
+          value={property.ubicacion}
+          error={error.ubicacion}
+          handleChange={handleChange}
+        />
+        <div className={styles.img}>
+          <img src={map} alt="img" />
         </div>
-        <div className={styles.flex}>
-          <Input
-            name="ubicacion"
-            label="Ubicacion"
-            value={property.ubicacion}
-            error={error.ubicacion}
-            handleChange={handleChange}
-          />
-          <Input
-            name="calidad"
-            label="Calidad"
-            value={property.calidad}
-            error={error.calidad}
-            handleChange={handleChange}
-          />
-          <Input
-            name="estado"
-            label="Estado Propiedad"
-            value={property.estado}
-            error={error.estado}
-            handleChange={handleChange}
-          />
-          <Input
-            name="supCubierta"
-            label="Sup cubierta"
-            value={property.supCubierta}
-            error={error.supCubierta}
-            handleChange={handleChange}
-          />
-          <Input
-            name="supDescubierta"
-            label="Sup descubierta"
-            value={property.supDescubierta}
-            error={error.supDescubierta}
-            handleChange={handleChange}
-          />
-          <button type="submit" className="btn btn-success">
-            Continuar
-          </button>
-        </div>
-      </form>
-    </div>
+        <Input
+          name="calidad"
+          label="Calidad"
+          value={property.calidad}
+          error={error.calidad}
+          handleChange={handleChange}
+        />
+        <Input
+          name="estado"
+          label="Estado Propiedad"
+          value={property.estado}
+          error={error.estado}
+          handleChange={handleChange}
+        />
+        <Input
+          name="supCubierta"
+          label="Sup cubierta"
+          value={property.supCubierta}
+          error={error.supCubierta}
+          handleChange={handleChange}
+        />
+        <Input
+          name="supDescubierta"
+          label="Sup descubierta"
+          value={property.supDescubierta}
+          error={error.supDescubierta}
+          handleChange={handleChange}
+        />
+        <Input
+          name="dormitorios"
+          label="Dormitorios"
+          value={property.dormitorios}
+          error={error.dormitorios}
+          handleChange={handleChange}
+        />
+        <button type="submit" className="btn btn-success">
+          Continuar
+        </button>
+      </div>
+    </form>
   );
 }

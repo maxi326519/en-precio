@@ -1,6 +1,7 @@
-import styles from "./Dashboard.module.css";
 import PropertyTable from "./PropertyTable/PropertyTable";
 import SideBar from "./SideBar/SideBar";
+
+import styles from "./Dashboard.module.css";
 
 export default function Dashboard() {
   return (
