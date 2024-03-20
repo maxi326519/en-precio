@@ -51,9 +51,44 @@
   position: relative;
 }
 
+.profile .data {
+  padding: 8px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: white;
+}
+
+.profile .data img {
+  width: 35px;
+  height: 35px;
+  border: 1px solid grey;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.profile .profileMenu li {
+  display: flex;
+  align-items: center;
+}
+
+.profile .profileMenu img {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+.profile .profileMenu a {
+  color: black;
+}
+
+.profile .data span {
+  color: black;
+}
+
 .profileMenu {
   position: absolute;
   z-index: 1000;
+  top: 60px;
   right: 0;
   display: none;
   width: max-content;
@@ -75,8 +110,15 @@
 
 .profileMenu li:hover {
   cursor: pointer;
-  color: var(--primary-color);
   background-color: #4442;
+}
+
+.profileMenu li:hover a {
+  color: var(--primary-color);
+}
+
+.profileMenu li:hover img {
+  filter: var(--primary-filter);
 }
 
 .profileMenu li a {

@@ -1,18 +1,26 @@
+import { Link, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { RootState } from "../../interfaces/ReduxState";
 import { useState } from "react";
-import { Link } from "react-router-dom";
 
 import styles from "./Navbar.module.css";
 import logo from "../../assets/img/logo.png";
+import userSvg from "../../assets/svg/profile.svg";
 import menu from "../../assets/svg/menu.svg";
+import companySvg from "../../assets/svg/menu/company.svg";
+import dashboardSvg from "../../assets/svg/menu/dashboard.svg";
+import logoutSvg from "../../assets/svg/menu/logout.svg";
+import profileSvg from "../../assets/svg/menu/profile.svg";
 
 interface Props {
   opaque?: boolean;
 }
 
 export default function Navbar({ opaque }: Props) {
+  const redirect = useNavigate();
   const [showMenu, setShowMenu] = useState(false);
   const [showProfileMenu, setShowProfileMenu] = useState(false);
-  const user = true;
+  const user = useSelector((state: RootState) => state.user);
 
   function handleShowMenu() {
     setShowMenu(!showMenu);
@@ -22,7 +30,10 @@ export default function Navbar({ opaque }: Props) {
     setShowProfileMenu(!showProfileMenu);
   }
 
-  function handleCloseSesion() {}
+  function handleCloseSesion() {
+    // Logout code
+    redirect("/login");
+  }
 
   return (
     <div
@@ -59,19 +70,37 @@ export default function Navbar({ opaque }: Props) {
         </ul>
         {user ? (
           <div className={styles.profile}>
-            <button onClick={handleShowProfileMenu}>Maximiliano</button>
+            <div className={styles.data} onClick={handleShowProfileMenu}>
+              <img src={user.photo || userSvg} alt="user" />
+              <span>Maximiliano</span>
+            </div>
             <ul
               className={`${styles.profileMenu} ${
                 showProfileMenu ? styles.showProfileMenu : ""
               }`}
             >
               <li>
-                <Link to="/profile">Perfil</Link>
+                <Link to="/profile">
+                  <img src={profileSvg} alt="profileSvg" />
+                  <span>Perfil</span>
+                </Link>
               </li>
               <li>
-                <Link to="/dashboard">Dashboard</Link>
+                <Link to="/realState">
+                  <img src={companySvg} alt="companySvg" />
+                  <span>Inmobiliaria</span>
+                </Link>
               </li>
-              <li onClick={handleCloseSesion}>Cerrar sesión</li>
+              <li>
+                <Link to="/dashboard">
+                  <img src={dashboardSvg} alt="dashboardSvg" />
+                  <span>Dashboard</span>
+                </Link>
+              </li>
+              <li onClick={handleCloseSesion}>
+                <img src={logoutSvg} alt="logoutSvg" />
+                <span>Cerrar sesión</span>
+              </li>
             </ul>
           </div>
         ) : (
