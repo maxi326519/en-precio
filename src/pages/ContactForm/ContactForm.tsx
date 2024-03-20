@@ -1,7 +1,8 @@
-import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
+import Input from "../../components/Inputs/Input";
 import Navbar from "../../components/Navbar/Navbar";
+import TextAreaInput from "../../components/Inputs/TextareaInput";
 
 import styles from "./ContactForm.module.css";
 import homeWave from "../../assets/svg/home-wave.svg";
@@ -35,7 +36,6 @@ const initError = (): Error => ({
 });
 
 export default function ContactForm() {
-  const redirect = useNavigate();
   const [error, setError] = useState(initError());
   const [contact, setContact] = useState(initContactData());
 
@@ -61,34 +61,31 @@ export default function ContactForm() {
 
     // Affair
     if (error.affair === "") {
-      error.affair = "Debes agregar una contraseña";
+      error.affair = "Debes agregar una asunto";
       value = false;
     }
 
     // Name
     if (error.name === "") {
-      error.name = "Debes agregar una contraseña";
+      error.name = "Debes agregar un nombre";
       value = false;
     }
 
     // Messsage
     if (error.message === "") {
-      error.message = "Debes agregar una contraseña";
+      error.message = "Debes agregar una mensaje";
       value = false;
     }
 
-    value = true;
-
     // Set error and return the value
-    // setError(error);
+    setError(error);
     return value;
   }
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>): void {
     event.preventDefault();
     if (handleValidations()) {
-      // Login code
-      redirect("/");
+      // Send consult
     }
   }
 
@@ -96,75 +93,39 @@ export default function ContactForm() {
     <div className={styles.sesion}>
       <Navbar opaque={true} />
       <form className={styles.form} onSubmit={handleSubmit}>
+        <h2>Contactanos</h2>
         <div className={styles.container}>
-          <h2>Contactanos</h2>
-
-          {/* NAME */}
-          <div className="form-floating mb-3">
-            <input
-              type="text"
-              name="name"
-              value={contact.name}
-              className={`form-control ${!error.name ? "" : "is-invalid"}`}
-              id={error.name ? "floatingInputInvalid" : "pass"}
-              placeholder="Nombre"
-              onChange={handleChange}
-            />
-            <label htmlFor="floatingInput">Nombre</label>
-            {!error.name ? null : <small>{error.name}</small>}
-          </div>
-
-          {/* EMAIL */}
-          <div className="form-floating mb-3">
-            <input
-              type="email"
-              name="email"
-              value={contact.email}
-              className={`form-control ${!error.email ? "" : "is-invalid"}`}
-              id={error.email ? "floatingInputInvalid" : "user"}
-              placeholder="name"
-              onChange={handleChange}
-            />
-            <label htmlFor="floatingInput">Email</label>
-            {!error.email ? null : <small>{error.email}</small>}
-          </div>
-
-          {/* AFFAIR */}
-          <div className="form-floating mb-3">
-            <input
-              type="text"
-              name="affair"
-              value={contact.affair}
-              className={`form-control ${!error.affair ? "" : "is-invalid"}`}
-              id={error.affair ? "floatingInputInvalid" : "pass"}
-              placeholder="Asunto"
-              onChange={handleChange}
-            />
-            <label htmlFor="floatingInput">Asunto</label>
-            {!error.affair ? null : <small>{error.affair}</small>}
-          </div>
-
-          {/* MESSAGE */}
-          <div className="form-floating mb-3">
-            <textarea
-              name="message"
-              value={contact.message}
-              className={`form-control ${!error.message ? "" : "is-invalid"}`}
-              id={error.message ? "floatingInputInvalid" : "pass"}
-              placeholder="Escribe tu mensaje"
-              onChange={handleChange}
-            />
-            <label htmlFor="floatingInput">Mensaje</label>
-            {!error.message ? null : <small>{error.message}</small>}
-          </div>
-
+          <Input
+            type="text"
+            name="name"
+            value={contact.name}
+            label="Nombre"
+            onChange={handleChange}
+          />
+          <Input
+            type="email"
+            name="email"
+            value={contact.email}
+            label="Correo"
+            onChange={handleChange}
+          />
+          <Input
+            type="text"
+            name="affair"
+            label="Asunto"
+            value={contact.affair}
+            onChange={handleChange}
+          />
+          <TextAreaInput
+            name="message"
+            value={contact.message}
+            label="Mensaje"
+            onChange={handleChange}
+          />
           <button className="btn btn-primary" type="submit">
-            Iniciar sesión
+            Enviar
           </button>
         </div>
-        <span className={styles.singupLink}>
-          ¿No estas registrado? <Link to="/singup">Registrarse</Link>
-        </span>
       </form>
       <img className={styles.wave} src={homeWave} alt="wave" />
     </div>

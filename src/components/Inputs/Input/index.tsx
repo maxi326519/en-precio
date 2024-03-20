@@ -5,7 +5,7 @@ interface InputProps {
   type?: string;
   disabled?: boolean;
   error?: string;
-  handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 /**
@@ -24,7 +24,7 @@ export default function Input({
   type = "text",
   error = "",
   disabled = false,
-  handleChange,
+  onChange,
 }: InputProps) {
   return (
     <div className="form-floating">
@@ -35,7 +35,7 @@ export default function Input({
         value={value}
         type={type}
         step="any"
-        onChange={handleChange}
+        onChange={onChange}
         disabled={disabled}
       />
       <label htmlFor={name} className="form-label">
