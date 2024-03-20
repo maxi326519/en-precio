@@ -9,6 +9,7 @@ import SearchMaps from "./pages/Search/SearchMaps/SearchMaps";
 
 import ContactForm from "./pages/ContactForm/ContactForm";
 import AboutUs from "./pages/AboutUs/AboutUs";
+import Profile from "./pages/Profile/Profile";
 
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -26,6 +27,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/form" element={<ContactForm />} />
         <Route path="/about" element={<AboutUs />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
     </div>
   );

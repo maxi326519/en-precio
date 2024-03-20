@@ -1,0 +1,31 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-direction: column;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #fff2;
+}
+
+.imageContainer {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.imageContainer img {
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.imageContainer .invoiceIcon {
+  width: 50%;
+  filter: invert(80%);
+}

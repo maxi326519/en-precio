@@ -18,19 +18,36 @@
 }
 
 .btn-primary {
-  padding: 10px 15px;
+  padding: 10px 20px !important;
   background-color: #1319ad !important;
 }
 
 .btn-primary:hover {
+  filter: brightness(80%);
   background-color: var(--primary-color) !important;
 }
 
 .btn-outline-primary {
+  padding: 10px 20px !important;
   color: var(--primary-color) !important;
   border-color: var(--primary-color) !important;
 }
 
 .btn-outline-primary:hover {
+  color: white !important;
+  background-color: var(--primary-color) !important;
+}
+
+.btn-primary,
+.btn-outline-primary {
+  padding: 10px 20px !important;
+}
+
+.btn-primary:active,
+.btn-primary:focus,
+.btn-outline-primary:active,
+.btn-outline-primary:focus {
+  outline: 4px grey !important;
+  color: white !important;
   background-color: var(--primary-color) !important;
 }
