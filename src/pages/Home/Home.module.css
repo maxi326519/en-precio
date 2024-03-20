@@ -9,11 +9,32 @@
   width: 100%;
   min-height: 70vh;
   padding-top: var(--navbar-height);
-  background-position: center;
-  background-image: url("../../assets/img/maps.png");
+  background-position: 0 -200px;
+  background-image: url("../../assets/img/maps.jpeg");
+  background-attachment: fixed;
+}
+
+.home::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* Usamos un gradiente negro con opacidad para oscurecer la imagen de fondo */
+  background: rgba(
+    0,
+    0,
+    0,
+    0.5
+  ); /* Ajusta la opacidad (0.5 en este caso) según necesites */
+  /* Asegúrate de que el pseudo-elemento no interfiera con el contenido de .home */
+  z-index: 1;
 }
 
 .form {
+  position: relative;
+  z-index: 500;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
@@ -41,13 +62,19 @@
   gap: 10px;
   padding: 10px;
   border-radius: 10px;
-  background-color: white;
+}
+
+.filters div {
+  width: 100%;
 }
 
 .type {
   display: flex;
   gap: 10px;
   grid-column: 1 / 5;
+  border-radius: 10px;
+  padding: 5px;
+  background-color: white;
 }
 
 .type button {
@@ -55,23 +82,23 @@
 }
 
 .searchBar {
-  display: flex;
   grid-column: 1 / 5;
   display: flex;
+  gap: 10px;
 }
 
 .searchBar div {
   flex-grow: 1;
 }
 
-.priceRange {
-  grid-column: 1 / 3;
-  display: flex;
+.searchBar button {
+  width: max-content;
 }
 
-.priceRange {
-  display: flex;
-  gap: 10px;
+.searchBar img {
+  width: 20px;
+  height: 20px;
+  filter: invert(100%);
 }
 
 .details {
@@ -96,17 +123,23 @@
 
 .detailItem:nth-child(1) {
   justify-content: flex-start;
-  background-image: url("../../assets/img/maps.png");
+  background-position: center;
+  background-size: cover;
+  background-image: url("../../assets/img/tasacion.webp");
 }
 
 .detailItem:nth-child(2) {
   justify-content: flex-end;
-  background-image: url("../../assets/img/maps.png");
+  background-position: center;
+  background-size: cover;
+  background-image: url("../../assets/img/tasacion.webp");
 }
 
 .detailItem:nth-child(3) {
   justify-content: flex-start;
-  background-image: url("../../assets/img/maps.png");
+  background-position: center;
+  background-size: cover;
+  background-image: url("../../assets/img/tasacion.webp");
 }
 
 .detailItem .text {

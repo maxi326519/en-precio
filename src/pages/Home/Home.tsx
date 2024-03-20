@@ -6,6 +6,7 @@ import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 
 import styles from "./Home.module.css";
+import searchIcon from "../../assets/svg/search.svg";
 
 export default function Home() {
   const redirect = useNavigate();
@@ -74,34 +75,32 @@ export default function Home() {
                 name="search"
                 label="Ingresa una ubicacion"
                 value={search}
-                handleChange={handleChange}
+                onChange={handleChange}
               />
               <button className="btn btn-primary" onClick={handleSubmit}>
-                {">"}
+                <img src={searchIcon} alt="search" />
               </button>
             </div>
-            <div className={styles.priceRange}>
-              <Input
-                name="minPrice"
-                label="Min"
-                type="number"
-                value={filters.minPrice}
-                handleChange={handleChangeFilters}
-              />
-              <Input
-                name="maxPrice"
-                label="Max"
-                type="number"
-                value={filters.maxPrice}
-                handleChange={handleChangeFilters}
-              />
-            </div>
+            <Input
+              name="minPrice"
+              label="Precio minimo"
+              type="number"
+              value={filters.minPrice}
+              onChange={handleChangeFilters}
+            />
+            <Input
+              name="maxPrice"
+              label="Precio Maximo"
+              type="number"
+              value={filters.maxPrice}
+              onChange={handleChangeFilters}
+            />
             <Input
               name="bedRooms"
               label="Habitaciones"
               type="number"
               value={filters.bedRooms}
-              handleChange={handleChangeFilters}
+              onChange={handleChangeFilters}
             />
           </div>
         </form>
