@@ -18,6 +18,7 @@
   height: 300px;
   border-radius: 50%;
   overflow: hidden;
+  border: 1px solid grey;
 }
 
 .imageContainer img {
