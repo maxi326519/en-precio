@@ -37,7 +37,7 @@ export default function Step1({ property, error, onNext, onChange }: Props) {
           label="Ubicacion"
           value={property.ubicacion}
           error={error.ubicacion}
-          handleChange={handleChange}
+          onChange={handleChange}
         />
         <div className={styles.img}>
           <img src={map} alt="img" />
@@ -47,35 +47,35 @@ export default function Step1({ property, error, onNext, onChange }: Props) {
           label="Calidad"
           value={property.calidad}
           error={error.calidad}
-          handleChange={handleChange}
+          onChange={handleChange}
         />
         <Input
           name="estado"
           label="Estado Propiedad"
           value={property.estado}
           error={error.estado}
-          handleChange={handleChange}
+          onChange={handleChange}
         />
         <Input
           name="supCubierta"
           label="Sup cubierta"
           value={property.supCubierta}
           error={error.supCubierta}
-          handleChange={handleChange}
+          onChange={handleChange}
         />
         <Input
           name="supDescubierta"
           label="Sup descubierta"
           value={property.supDescubierta}
           error={error.supDescubierta}
-          handleChange={handleChange}
+          onChange={handleChange}
         />
         <Input
           name="dormitorios"
           label="Dormitorios"
           value={property.dormitorios}
           error={error.dormitorios}
-          handleChange={handleChange}
+          onChange={handleChange}
         />
         <button type="submit" className="btn btn-success">
           Continuar

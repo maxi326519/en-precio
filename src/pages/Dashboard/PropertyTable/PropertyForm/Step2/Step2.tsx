@@ -39,14 +39,14 @@ export default function Step2({
             label="Predisposicion"
             value={property.predisposicion}
             error={error.predisposicion}
-            handleChange={handleChange}
+            onChange={handleChange}
           />
           <Input
             name="orientacion"
             label="Orientacion"
             value={property.orientacion}
             error={error.orientacion}
-            handleChange={handleChange}
+            onChange={handleChange}
           />
           <div className={styles.checkGrid}>
             <Checkbox
@@ -212,49 +212,49 @@ export default function Step2({
               label="orientacion"
               type="number"
               value={property.adicionales.orientacion}
-              handleChange={handleChange}
+              onChange={handleChange}
             />
             <Input
               name="plantas"
               label="plantas"
               type="number"
               value={property.adicionales.plantas}
-              handleChange={handleChange}
+              onChange={handleChange}
             />
             <Input
               name="largoTerreno"
               label="largoTerreno"
               type="number"
               value={property.adicionales.largoTerreno}
-              handleChange={handleChange}
+              onChange={handleChange}
             />
             <Input
               name="supSemicubierta"
               label="supSemicubierta"
               type="number"
               value={property.adicionales.supSemicubierta}
-              handleChange={handleChange}
+              onChange={handleChange}
             />
             <Input
               name="frenteTerreno"
               label="frenteTerreno"
               type="number"
               value={property.adicionales.frenteTerreno}
-              handleChange={handleChange}
+              onChange={handleChange}
             />
             <Input
               name="FOT"
               label="FOT"
               type="number"
               value={property.adicionales.FOT}
-              handleChange={handleChange}
+              onChange={handleChange}
             />
             <Input
               name="coberturaCochera"
               label="coberturaCochera"
               type="number"
               value={property.adicionales.coberturaCochera}
-              handleChange={handleChange}
+              onChange={handleChange}
             />
           </div>
           <div className={styles.btnContainer}>

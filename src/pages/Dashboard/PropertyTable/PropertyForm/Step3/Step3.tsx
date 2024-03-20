@@ -40,7 +40,7 @@ export default function Step3({
             label="Video"
             value={property.videoUrl}
             error={error.videoUrl}
-            handleChange={handleChange}
+            onChange={handleChange}
           />
           <h3>Video Url</h3>
           <Input
@@ -48,7 +48,7 @@ export default function Step3({
             label="Video 360"
             value={property.video360Url}
             error={error.video360Url}
-            handleChange={handleChange}
+            onChange={handleChange}
           />
         </div>
         <div className={styles.btnContainer}>

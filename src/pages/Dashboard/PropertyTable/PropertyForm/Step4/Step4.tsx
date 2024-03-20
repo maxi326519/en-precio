@@ -39,14 +39,14 @@ export default function Step4({
             type="date"
             value={property.titulo}
             error={error.titulo}
-            handleChange={handleChange}
+            onChange={handleChange}
           />
           <TextAreaInput
             name="date"
             label="Fecha"
             value={property.titulo}
             error={error.titulo}
-            handleChange={handleChange}
+            onChange={handleChange}
           />
           <div className={styles.btnContainer}>
             <button type="submit" className="btn btn-success" onClick={onBack}>

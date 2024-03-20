@@ -76,7 +76,7 @@ const PlacesAutocomplete = ({ location, error, setLocation }: Props) => {
         label="Ubicación"
         value={value}
         error={error}
-        handleChange={handleInput}
+        onChange={handleInput}
       />
       {status === "OK" && (
         <ul className={styles.dropBox}>{renderSuggestions()}</ul>
