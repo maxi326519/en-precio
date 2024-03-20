@@ -7,15 +7,16 @@ import Dashboard from "./pages/Dashboard/Dashboard";
 import SearchList from "./pages/Search/SearchList/SearchList";
 import SearchMaps from "./pages/Search/SearchMaps/SearchMaps";
 
-import styles from "./App.module.css";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.min.js";
 import ContactForm from "./pages/ContactForm/ContactForm";
 import AboutUs from "./pages/AboutUs/AboutUs";
 
+import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.min.js";
+
 function App() {
   return (
-    <div className={styles.app}>
+    <div className="App">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />

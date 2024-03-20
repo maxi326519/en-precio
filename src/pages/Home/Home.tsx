@@ -3,6 +3,7 @@ import { useState } from "react";
 
 import Input from "../../components/Inputs/Input";
 import Navbar from "../../components/Navbar/Navbar";
+import Footer from "../../components/Footer/Footer";
 
 import styles from "./Home.module.css";
 
@@ -104,14 +105,46 @@ export default function Home() {
             />
           </div>
         </form>
-        <div className={styles.homeBar}>
-          <div className={styles.container}>
-            <div className={styles.item}></div>
-            <div className={styles.item}></div>
-            <div className={styles.item}></div>
+      </div>
+      <div className={styles.details}>
+        <div className={styles.detailItem}>
+          <div className={styles.text}>
+            <h3>La mejor tasación</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit
+              laudantium quidem nostrum accusamus officia facilis velit, ipsam
+              beatae aspernatur assumenda quibusdam corrupti iusto
+              necessitatibus nesciunt labore rerum ducimus architecto molestiae.
+            </p>
+            <button className="btn btn-primary">Ver mas</button>
+          </div>
+        </div>
+        <div className={styles.detailItem}>
+          <div className={styles.text}>
+            <h3>La mejor tasación</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit
+              laudantium quidem nostrum accusamus officia facilis velit, ipsam
+              beatae aspernatur assumenda quibusdam corrupti iusto
+              necessitatibus nesciunt labore rerum ducimus architecto molestiae.
+            </p>
+            <button className="btn btn-primary">Ver mas</button>
+          </div>
+        </div>
+        <div className={styles.detailItem}>
+          <div className={styles.text}>
+            <h3>La mejor tasación</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit
+              laudantium quidem nostrum accusamus officia facilis velit, ipsam
+              beatae aspernatur assumenda quibusdam corrupti iusto
+              necessitatibus nesciunt labore rerum ducimus architecto molestiae.
+            </p>
+            <button className="btn btn-primary">Ver mas</button>
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

@@ -6,10 +6,10 @@
 
   /* Sizes */
   --navbar-height: 80px;
-  --max-width: 1200px;
+  --max-width: 1400px;
 }
 
-.app {
+.App {
   display: flex;
   flex-direction: column;
   width: 100vw;
@@ -18,7 +18,7 @@
 }
 
 .btn-primary {
-  color: red !important;
+  padding: 10px 15px;
   background-color: #1319ad !important;
 }
 

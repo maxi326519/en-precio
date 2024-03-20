@@ -1,0 +1,47 @@
+.footer {
+  border-top: 1px solid grey;
+  padding: 50px;
+}
+
+.container {
+  display: flex;
+  justify-content: space-around;
+  gap: 40px;
+  margin: auto;
+  max-width: var(--max-width);
+}
+
+.container .column .logo {
+  width: 200px;
+  height: max-content;
+  border-radius: 10px;
+}
+
+.container .column {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: grey;
+}
+
+.container .column h4 {
+  color: black;
+}
+
+.container .column .icon {
+  border-radius: 0;
+  width: 25px;
+  margin-right: 5px;
+  filter: invert(50%);
+}
+
+.container .column a:hover {
+  color: var(--primary-color);
+}
+.container .column a:hover .icon {
+  filter: var(--primary-filter);
+}
+
+.container .column a {
+  color: grey;
+}
