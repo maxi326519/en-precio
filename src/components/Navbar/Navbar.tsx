@@ -18,7 +18,7 @@ interface Props {
 
 export default function Navbar({ opaque }: Props) {
   const redirect = useNavigate();
-  const [showMenu, setShowMenu] = useState(false);
+  const [showMenu, setShowMenu] = useState(true);
   const [showProfileMenu, setShowProfileMenu] = useState(false);
   const user = useSelector((state: RootState) => state.user);
 
@@ -68,8 +68,10 @@ export default function Navbar({ opaque }: Props) {
             <Link to="/form">Contacto</Link>
           </li>
         </ul>
-        {user && showMenu ? (
-          <div className={styles.profile}>
+        {user ? (
+          <div
+            className={`${styles.profile} ${showMenu && styles.showProfile}`}
+          >
             <div className={styles.data} onClick={handleShowProfileMenu}>
               <img src={user.photo || userSvg} alt="user" />
               <span>Maximiliano</span>
@@ -104,7 +106,7 @@ export default function Navbar({ opaque }: Props) {
             </ul>
           </div>
         ) : (
-          <ul className={styles.sesion}>
+          <ul className={`${styles.sesion} ${showMenu && styles.showProfile}`}>
             <li>
               <Link to="/login">Iniciar sesión</Link>
             </li>
