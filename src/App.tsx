@@ -6,7 +6,7 @@ import Singup from "./pages/Singup/Singup";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import SearchList from "./pages/Search/SearchList/SearchList";
 import SearchMaps from "./pages/Search/SearchMaps/SearchMaps";
-
+import SearchDetails from "./pages/Search/SearchDetails/SearchDetails";
 import CompanyProfile from "./pages/CompanyProfile/CompanyProfile";
 import ContactForm from "./pages/ContactForm/ContactForm";
 import AboutUs from "./pages/AboutUs/AboutUs";
@@ -24,6 +24,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/singup" element={<Singup />} />
         <Route path="/search" element={<SearchList />} />
+        <Route path="/search/:id" element={<SearchDetails />} />
         <Route path="/search-maps" element={<SearchMaps />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/form" element={<ContactForm />} />
