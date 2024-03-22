@@ -68,7 +68,7 @@ export default function Navbar({ opaque }: Props) {
             <Link to="/form">Contacto</Link>
           </li>
         </ul>
-        {user ? (
+        {user && showMenu ? (
           <div className={styles.profile}>
             <div className={styles.data} onClick={handleShowProfileMenu}>
               <img src={user.photo || userSvg} alt="user" />

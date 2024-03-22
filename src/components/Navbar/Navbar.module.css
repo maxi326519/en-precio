@@ -11,10 +11,9 @@
 
 .opaque {
   box-shadow: 0 0 5px 5px #0001;
-  background-color: var(--primary-color);
   color: white;
-  border-radius: 0 0 20px 20px;
   transition: 0.2s;
+  background-color: var(--primary-color);
 }
 
 .container {
@@ -31,7 +30,9 @@
 
 .container header {
   display: flex;
+  justify-content: space-between;
   align-items: center;
+  width: 100%;
   height: var(--navbar-height);
 }
 
@@ -47,89 +48,6 @@
   height: 100%;
 }
 
-.profile {
-  position: relative;
-}
-
-.profile .data {
-  padding: 8px 10px;
-  border-radius: 10px;
-  cursor: pointer;
-  background-color: white;
-}
-
-.profile .data img {
-  width: 35px;
-  height: 35px;
-  border: 1px solid grey;
-  border-radius: 50%;
-  margin-right: 10px;
-}
-
-.profile .profileMenu li {
-  display: flex;
-  align-items: center;
-}
-
-.profile .profileMenu img {
-  width: 20px;
-  height: 20px;
-  margin-right: 10px;
-}
-
-.profile .profileMenu a {
-  color: black;
-}
-
-.profile .data span {
-  color: black;
-}
-
-.profileMenu {
-  position: absolute;
-  z-index: 1000;
-  top: 60px;
-  right: 0;
-  display: none;
-  width: max-content;
-  padding: 0;
-  list-style: none;
-  border-radius: 5px;
-  box-shadow: 0px 0px 10px 5px #4442;
-  background-color: white;
-}
-
-.profileMenu li {
-  padding: 10px 20px;
-  color: black;
-}
-
-.profileMenu li a {
-  color: black;
-}
-
-.profileMenu li:hover {
-  cursor: pointer;
-  background-color: #4442;
-}
-
-.profileMenu li:hover a {
-  color: var(--primary-color);
-}
-
-.profileMenu li:hover img {
-  filter: var(--primary-filter);
-}
-
-.profileMenu li a {
-  color: var(--primary-color);
-}
-
-.showProfileMenu {
-  display: flex;
-  flex-direction: column;
-}
-
 .container header .menuSvg {
   height: 40px;
   filter: invert(40%);
@@ -138,11 +56,11 @@
 .menu {
   display: none;
   flex-direction: column;
-  gap: 10px;
+  gap: 20px;
   align-items: center;
   height: max-content;
   margin: 0;
-  padding: 10px;
+  padding: 40px 10px;
   list-style: none;
 }
 
@@ -162,27 +80,7 @@
 }
 
 .menu li a:hover {
-  color: var(--primary-color);
-  border-color: var(--primary-color);
-  transition: 0.2s;
-}
-
-/* A LINK - BEFORE */
-.menu li a::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 50%;
-  width: 0;
-  height: 100%;
-  border-bottom: 3px solid var(--primary-color);
-  transition: 0.2s;
-}
-
-.menu li a:hover::before {
-  left: 0;
-  width: 100%;
-  transition: 0.2s;
+  color: red;
 }
 
 /* SESION BUTTONS */
@@ -238,9 +136,10 @@
 }
 
 .showMenu .container {
+  padding-bottom: 20px;
   border-radius: 0 0 20px 20px;
   box-shadow: 0 0 5px 5px #0001;
-  background-color: #fff;
+  background-color: var(--primary-color);
   transition: 0.5s;
 }
 
@@ -252,13 +151,83 @@
   display: flex;
 }
 
+.profile {
+  width: 100%;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.profile .data {
+  padding: 8px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: white;
+}
+
+.profile .data img {
+  width: 35px;
+  height: 35px;
+  border: 1px solid grey;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.profile .profileMenu li {
+  display: flex;
+  align-items: center;
+}
+
+.profile .profileMenu img {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+.profile .profileMenu a {
+  color: black;
+}
+
+.profile .data span {
+  color: black;
+}
+
+.profileMenu {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0;
+  list-style: none;
+}
+
+.profileMenu li {
+  padding: 10px 20px;
+  color: black;
+}
+
+.profileMenu li a {
+  color: black;
+}
+
+.profileMenu li:hover {
+  cursor: pointer;
+  background-color: #4442;
+}
+
+.profileMenu li:hover a {
+  color: var(--primary-color);
+}
+
+.profileMenu li:hover img {
+  filter: var(--primary-filter);
+}
+
+.profileMenu li a {
+  color: var(--primary-color);
+}
+
 @media screen and (min-width: 1000px) {
   .navBar {
     height: var(--navbar-height);
-  }
-
-  .opaque {
-    border-radius: 0;
   }
 
   .showMenu {
@@ -269,8 +238,10 @@
   .container {
     flex-direction: row;
     height: var(--navbar-height);
+    padding: 0px 20px !important;
     border-radius: 0px !important;
     box-shadow: none !important;
+    padding: 0px 20px;
   }
 
   .container header {
@@ -284,12 +255,48 @@
   .menu {
     display: flex;
     flex-direction: row;
-    height: 100%;
+    gap: 10px;
+    height: var(--navbar-height);
     margin: 0;
+    margin-right: 20px;
+  }
+
+  .menu li {
+    width: max-content;
+  }
+
+  .opaque {
+    background-color: var(--primary-color);
   }
 
   /* SESION BUTTONS */
   .sesion {
     display: flex;
+  }
+
+  /* PROFILE */
+  .profile {
+    position: relative;
+    width: max-content;
+  }
+
+  .profile .data {
+    min-width: 200px;
+    width: max-content;
+  }
+
+  .profileMenu {
+    display: none;
+  }
+
+  .showProfileMenu {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    display: flex;
+    width: max-content;
+    min-width: 200px;
+    border-radius: 5px;
+    background-color: white;
   }
 }

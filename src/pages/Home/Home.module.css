@@ -179,3 +179,33 @@
 .detailItem button {
   width: 200px;
 }
+
+@media screen and (max-width: 600px) {
+  .home {
+    height: 100vh;
+  }
+
+  .form {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    padding-top: 30%;
+  }
+
+  .form h2 {
+    padding: 20px;
+    text-align: center;
+  }
+
+  .details {
+    gap: 50px;
+  }
+
+  .detailItem {
+    padding: 30px;
+  }
+
+  .detailItem .text {
+    width: max-content;
+  }
+}
