@@ -106,3 +106,42 @@
   font-weight: bold;
   color: grey;
 }
+
+@media screen and (max-width: 600px) {
+  .row {
+    display: flex;
+    flex-direction: column;
+    height: max-content;
+    padding: 20px;
+  }
+
+  .imgContainer {
+    width: 100%;
+  }
+
+  .header {
+    align-items: center;
+  }
+
+  .data {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, min-content);
+    gap: 0;
+    margin: 0;
+    padding: 0;
+  }
+
+  .data li {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .data li:last-child {
+    grid-column: 1 / 6;
+    text-align: center;
+    padding-top: 20px;
+    font-size: 20px;
+  }
+}

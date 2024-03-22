@@ -14,3 +14,9 @@
   max-width: var(--max-width);
   padding: 20px 0;
 }
+
+@media screen and (max-width: 600px) {
+  .search {
+    padding: 0px 20px;
+  }
+}
