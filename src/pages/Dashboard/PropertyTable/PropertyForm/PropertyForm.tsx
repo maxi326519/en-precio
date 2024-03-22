@@ -43,12 +43,8 @@ export default function PropertyForm({ data, onClose, onSubmit }: Props) {
 
   return (
     <div className={style.background}>
-      <button className="btn btn-close" onClick={onClose}></button>
       <header className={style.close}>
-        <span>1</span>
-        <span>2</span>
-        <span>3</span>
-        <span>4</span>
+        <button className="btn btn-close" onClick={onClose}></button>
       </header>
       {step === 1 && (
         <Step1

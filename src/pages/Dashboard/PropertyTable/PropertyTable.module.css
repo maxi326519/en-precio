@@ -1,9 +1,10 @@
 .table {
   flex-grow: 1;
+  position: relative;
   display: flex;
   flex-direction: column;
   border-radius: 10px;
-  height: calc(100vh - 230px);
+  height: 100%;
   padding: 20px;
   overflow: hidden;
   background-color: #fff2;

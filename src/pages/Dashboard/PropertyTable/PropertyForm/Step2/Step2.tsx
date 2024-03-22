@@ -4,6 +4,7 @@ import Input from "../../../../../components/Inputs/Input";
 import Checkbox from "../../../../../components/Inputs/Checkbox";
 
 import styles from "./Step2.module.css";
+import Steps from "../../../../../components/Steps/Steps";
 
 interface Props {
   property: Property;
@@ -32,6 +33,7 @@ export default function Step2({
 
   return (
     <div>
+      <Steps step={2} />
       <form className={styles.form} onSubmit={onNext}>
         <div className={styles.flex}>
           <Input

@@ -1,5 +1,6 @@
 import Input from "../../../../../components/Inputs/Input";
 import TextAreaInput from "../../../../../components/Inputs/TextareaInput";
+import Steps from "../../../../../components/Steps/Steps";
 import { Property, PropertyError } from "../../../../../interfaces/Property";
 
 import styles from "./Step4.module.css";
@@ -31,6 +32,7 @@ export default function Step4({
 
   return (
     <div>
+      <Steps step={4} />
       <form className={styles.form} onSubmit={onSubmit}>
         <div className={styles.flex}>
           <Input

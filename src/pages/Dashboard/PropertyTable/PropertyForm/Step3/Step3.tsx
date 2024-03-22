@@ -3,6 +3,7 @@ import { Property, PropertyError } from "../../../../../interfaces/Property";
 import Input from "../../../../../components/Inputs/Input";
 
 import styles from "./Step3.module.css";
+import Steps from "../../../../../components/Steps/Steps";
 
 interface Props {
   property: Property;
@@ -31,6 +32,7 @@ export default function Step3({
 
   return (
     <div>
+      <Steps step={3} />
       <form className={styles.form} onSubmit={onNext}>
         <div className={styles.imgs}></div>
         <div className={styles.flex}>

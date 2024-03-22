@@ -1,9 +1,14 @@
-import { Property, PropertyError } from "../../../../../interfaces/Property";
+import {
+  Property,
+  PropertyError,
+  PropertyType,
+} from "../../../../../interfaces/Property";
 
 import Input from "../../../../../components/Inputs/Input";
 
 import styles from "./Step1.module.css";
 import map from "../../../../../assets/img/maps.png";
+import Steps from "../../../../../components/Steps/Steps";
 
 interface Props {
   property: Property;
@@ -24,12 +29,35 @@ export default function Step1({ property, error, onNext, onChange }: Props) {
     );
   }
 
+  function handleChangeType(type: PropertyType) {
+    onChange({ ...property, tipo: type }, error);
+  }
+
   return (
     <form className={styles.form} onSubmit={onNext}>
+      <Steps step={1} />
       <div className={styles.type}>
-        <button type="button">Departamento</button>
-        <button type="button">Casa</button>
-        <button type="button">Terrenos</button>
+        <button
+          className={property.tipo === "Casa" ? styles.active : ""}
+          onClick={() => handleChangeType(PropertyType.CASA)}
+          type="button"
+        >
+          Departamento
+        </button>
+        <button
+          className={property.tipo === "Departamento" ? styles.active : ""}
+          onClick={() => handleChangeType(PropertyType.DEPARTAMENTO)}
+          type="button"
+        >
+          Casa
+        </button>
+        <button
+          className={property.tipo === "Terreno" ? styles.active : ""}
+          onClick={() => handleChangeType(PropertyType.TERRENO)}
+          type="button"
+        >
+          Terrenos
+        </button>
       </div>
       <div className={styles.flex}>
         <Input
@@ -77,8 +105,13 @@ export default function Step1({ property, error, onNext, onChange }: Props) {
           error={error.dormitorios}
           onChange={handleChange}
         />
-        <button type="submit" className="btn btn-success">
+      </div>
+      <div className={styles.btnContainer}>
+        <button type="submit" className="btn btn-primary">
           Continuar
+        </button>
+        <button type="submit" className="btn btn-outline-primary">
+          Cancelar
         </button>
       </div>
     </form>
