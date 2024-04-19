@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 import Input from "../../components/Inputs/Input";
@@ -116,7 +116,9 @@ export default function Home() {
               beatae aspernatur assumenda quibusdam corrupti iusto
               necessitatibus nesciunt labore rerum ducimus architecto molestiae.
             </p>
-            <button className="btn btn-primary">Ver mas</button>
+            <Link to="/tasador" className="btn btn-primary">
+              Ver tasador
+            </Link>
           </div>
         </div>
         <div className={styles.detailItem}>

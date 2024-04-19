@@ -15,6 +15,7 @@ import Profile from "./pages/Profile/Profile";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
+import Tasador from "./pages/Tasador/Tasador";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
         <Route path="/about" element={<AboutUs />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/realState" element={<CompanyProfile />} />
+        <Route path="/tasador" element={<Tasador />} />
       </Routes>
     </div>
   );

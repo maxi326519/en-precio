@@ -30,7 +30,6 @@ export default function Navbar({ opaque }: Props) {
         !dropdownRef.current.contains(event.target as Node)
       ) {
         setShowProfileMenu(false);
-        console.log("Click fuera del menu");
       }
     };
 
