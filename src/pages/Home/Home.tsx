@@ -7,6 +7,7 @@ import Footer from "../../components/Footer/Footer";
 
 import styles from "./Home.module.css";
 import searchIcon from "../../assets/svg/search.svg";
+import homeWave from "../../assets/svg/home-wave.svg";
 
 export default function Home() {
   const redirect = useNavigate();
@@ -120,7 +121,7 @@ export default function Home() {
         </div>
         <div className={styles.detailItem}>
           <div className={styles.text}>
-            <h3>La mejor tasación</h3>
+            <h3>Datos de valor agregado</h3>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit
               laudantium quidem nostrum accusamus officia facilis velit, ipsam
@@ -132,7 +133,7 @@ export default function Home() {
         </div>
         <div className={styles.detailItem}>
           <div className={styles.text}>
-            <h3>La mejor tasación</h3>
+            <h3>Información del día a día</h3>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit
               laudantium quidem nostrum accusamus officia facilis velit, ipsam
@@ -143,7 +144,8 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <Footer />
+      <img className={styles.wave} src={homeWave} alt="wave" />
+      <Footer blue={true} />
     </div>
   );
 }
