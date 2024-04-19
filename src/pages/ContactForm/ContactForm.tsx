@@ -6,6 +6,7 @@ import TextAreaInput from "../../components/Inputs/TextareaInput";
 
 import styles from "./ContactForm.module.css";
 import homeWave from "../../assets/svg/home-wave.svg";
+import Footer from "../../components/Footer/Footer";
 
 interface ContactData {
   name: string;
@@ -90,44 +91,47 @@ export default function ContactForm() {
   }
 
   return (
-    <div className={styles.sesion}>
+    <div className={styles.background}>
       <Navbar opaque={true} />
-      <form className={styles.form} onSubmit={handleSubmit}>
-        <h2>Contactanos</h2>
-        <div className={styles.container}>
-          <Input
-            type="text"
-            name="name"
-            value={contact.name}
-            label="Nombre"
-            onChange={handleChange}
-          />
-          <Input
-            type="email"
-            name="email"
-            value={contact.email}
-            label="Correo"
-            onChange={handleChange}
-          />
-          <Input
-            type="text"
-            name="affair"
-            label="Asunto"
-            value={contact.affair}
-            onChange={handleChange}
-          />
-          <TextAreaInput
-            name="message"
-            value={contact.message}
-            label="Mensaje"
-            onChange={handleChange}
-          />
-          <button className="btn btn-primary" type="submit">
-            Enviar
-          </button>
-        </div>
-      </form>
+      <div className={styles.container}>
+        <form className={styles.form} onSubmit={handleSubmit}>
+          <h2>Contactanos</h2>
+          <div className={styles.inputs}>
+            <Input
+              type="text"
+              name="name"
+              value={contact.name}
+              label="Nombre"
+              onChange={handleChange}
+            />
+            <Input
+              type="email"
+              name="email"
+              value={contact.email}
+              label="Correo"
+              onChange={handleChange}
+            />
+            <Input
+              type="text"
+              name="affair"
+              label="Asunto"
+              value={contact.affair}
+              onChange={handleChange}
+            />
+            <TextAreaInput
+              name="message"
+              value={contact.message}
+              label="Mensaje"
+              onChange={handleChange}
+            />
+            <button className="btn btn-primary" type="submit">
+              Enviar
+            </button>
+          </div>
+        </form>
+      </div>
       <img className={styles.wave} src={homeWave} alt="wave" />
+      <Footer blue={true} />
     </div>
   );
 }
