@@ -23,4 +23,8 @@ dist-ssr
 *.sln
 *.sw?
 
+# Package
 package-lock.json
+
+# Firebase
+.firebase
