@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RootState } from "../../interfaces/ReduxState";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import styles from "./Navbar.module.css";
 import logo from "../../assets/img/logo-simple.png";
@@ -21,6 +21,25 @@ export default function Navbar({ opaque }: Props) {
   const [showMenu, setShowMenu] = useState(true);
   const [showProfileMenu, setShowProfileMenu] = useState(false);
   const user = useSelector((state: RootState) => state.user);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setShowProfileMenu(false);
+        console.log("Click fuera del menu");
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   function handleShowMenu() {
     setShowMenu(!showMenu);
@@ -43,13 +62,14 @@ export default function Navbar({ opaque }: Props) {
     >
       <div className={styles.container}>
         <header>
-          <div
+          <Link
+            to="/"
             className={styles.logo}
             data-aos="fade-down"
             data-aos-duration="400"
           >
             <img src={logo} alt="logo" />
-          </div>
+          </Link>
           <img
             className={styles.menuSvg}
             src={menu}
@@ -59,7 +79,7 @@ export default function Navbar({ opaque }: Props) {
         </header>
         <ul className={styles.menu}>
           <li>
-            <Link to="/">Home</Link>
+            <Link to="/">Inicio</Link>
           </li>
           <li>
             <Link to="/about">Sobre nosotros</Link>
@@ -71,6 +91,7 @@ export default function Navbar({ opaque }: Props) {
         {user ? (
           <div
             className={`${styles.profile} ${showMenu && styles.showProfile}`}
+            ref={dropdownRef}
           >
             <div className={styles.data} onClick={handleShowProfileMenu}>
               <img src={user.photo || userSvg} alt="user" />
