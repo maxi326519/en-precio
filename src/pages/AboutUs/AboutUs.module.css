@@ -1,5 +1,9 @@
 .about {
+  position: relative;
+  height: max-content;
   padding-top: var(--navbar-height);
+  padding-bottom: 0;
+  overflow-y: auto;
 }
 
 .content {
@@ -7,6 +11,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: max-content;
   padding: 50px;
 }
 
@@ -21,9 +26,5 @@
 }
 
 .wave {
-  position: absolute;
-  z-index: 500;
-  bottom: 0;
-  left: 0;
   width: 100%;
 }

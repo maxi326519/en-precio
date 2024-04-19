@@ -4,7 +4,7 @@ import { RootState } from "../../interfaces/ReduxState";
 import { useState } from "react";
 
 import styles from "./Navbar.module.css";
-import logo from "../../assets/img/logo.png";
+import logo from "../../assets/img/logo-simple.png";
 import userSvg from "../../assets/svg/profile.svg";
 import menu from "../../assets/svg/menu.svg";
 import companySvg from "../../assets/svg/menu/company.svg";

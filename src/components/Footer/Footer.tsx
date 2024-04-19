@@ -1,13 +1,17 @@
 import styles from "./Footer.module.css";
-import logo from "../../assets/img/logo.png";
+import logo from "../../assets/img/logo-simple.png";
 import instagramSvg from "../../assets/svg/redes/instagram.svg";
 import facebookSvg from "../../assets/svg/redes/facebook.svg";
 import twitterSvg from "../../assets/svg/redes/twitter.svg";
 import youtubeSvg from "../../assets/svg/redes/youtube.svg";
 
-export default function Footer() {
+interface Props {
+  blue?: boolean;
+}
+
+export default function Footer({ blue }: Props) {
   return (
-    <footer className={styles.footer}>
+    <footer className={`${styles.footer} ${blue ? styles.blue : ""}`}>
       <div className={styles.container}>
         <div className={styles.column}>
           <img className={styles.logo} src={logo} alt="" />

@@ -46,6 +46,34 @@
   color: grey;
 }
 
+.blue {
+  border: none;
+  background-color: var(--primary-color);
+}
+
+.blue .container .column h4 {
+  color: white;
+  font-size: bold;
+}
+
+.blue .column {
+  color: white;
+}
+
+.blue .container .column a {
+  color: white;
+}
+.blue .container .column a .icon {
+  filter: invert(100%);
+}
+
+.blue .container .column a:hover {
+  color: var(--secundary-color);
+}
+.blue .container .column a:hover .icon {
+  filter: var(--primary-filter);
+}
+
 @media screen and (max-width: 600px) {
   .container {
     flex-direction: column;
