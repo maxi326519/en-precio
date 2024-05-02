@@ -1,4 +1,5 @@
 .background {
+  position: relative;
   display: flex;
   flex-direction: column;
   padding-top: var(--navbar-height);
@@ -6,9 +7,23 @@
 }
 
 .container {
+  position: relative;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
   flex-grow: 1;
-  padding: 50px;
+  width: 100%;
+  min-height: max-content;
+  max-width: var(--max-width);
+  max-height: 60vh;
   margin: auto;
+  padding: 50px;
+}
+
+.container .imageCalculator {
+  min-height: 130%;
+  width: 50%;
+  max-width: 600px;
 }
 
 .form {
@@ -16,9 +31,11 @@
   flex-direction: column;
   gap: 20px;
   width: 500px;
+  height: max-content;
   padding: 40px;
   border-radius: 10px;
-  outline: 1px solid #4444;
+  background-color: white;
+  box-shadow: 0px 0px 20px 5px #4442;
 }
 
 .form h2 {
@@ -33,10 +50,20 @@
 }
 
 .form .type button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   flex-grow: 1;
   width: 120px;
   background-color: inherit;
   color: grey;
+}
+
+.form .type button img {
+  width: 50px;
+  height: 50px;
+  margin-top: 15px;
+  filter: invert(20%);
 }
 
 .form .type button:hover {
@@ -44,13 +71,25 @@
   border-color: transparent;
 }
 
+.form .type button:hover img {
+  filter: var(--primary-filter);
+}
+
 .form .type .active {
   background-color: var(--primary-color);
   color: white;
 }
 
+.form .type .active img {
+  filter: invert(100%);
+}
+
 .form .type .active:hover {
   color: white;
+}
+
+.form .type .active:hover img {
+  filter: invert(100%);
 }
 
 .form .sup {
@@ -61,4 +100,10 @@
 .form .check {
   display: flex;
   justify-content: space-between;
+}
+
+.wave {
+  position: relative;
+  z-index: 500;
+  width: 100%;
 }

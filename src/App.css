@@ -1,6 +1,7 @@
 :root {
   /* Colors */
   --primary-color: #1319ad;
+  --secundary-color: #ff0000;
   --primary-filter: invert(9%) sepia(83%) saturate(5000%) hue-rotate(243deg)
     brightness(104%) contrast(114%);
 
@@ -17,9 +18,11 @@
   overflow-y: scroll;
 }
 
+/* PRIMARY BUTTON */
 .btn-primary {
   padding: 10px 20px !important;
-  background-color: #1319ad !important;
+  color: white !important;
+  background-color: var(--primary-color) !important;
 }
 
 .btn-primary:hover {
@@ -50,4 +53,41 @@
   outline: 4px grey !important;
   color: white !important;
   background-color: var(--primary-color) !important;
+}
+
+/* SECUNDARY BUTTON */
+.btn-secundary {
+  padding: 10px 20px !important;
+  color: white !important;
+  background-color: var(--secundary-color) !important;
+}
+
+.btn-secundary:hover {
+  filter: brightness(80%);
+  background-color: var(--secundary-color) !important;
+}
+
+.btn-outline-secundary {
+  padding: 10px 20px !important;
+  color: var(--secundary-color) !important;
+  border-color: var(--secundary-color) !important;
+}
+
+.btn-outline-secundary:hover {
+  color: white !important;
+  background-color: var(--secundary-color) !important;
+}
+
+.btn-secundary,
+.btn-outline-secundary {
+  padding: 10px 20px !important;
+}
+
+.btn-secundary:active,
+.btn-secundary:focus,
+.btn-outline-secundary:active,
+.btn-outline-secundary:focus {
+  outline: 4px grey !important;
+  color: white !important;
+  background-color: var(--secundary-color) !important;
 }

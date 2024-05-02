@@ -6,6 +6,11 @@ import Input from "../../components/Inputs/Input";
 import Checkbox from "../../components/Inputs/Checkbox";
 
 import styles from "./Tasador.module.css";
+import houseSvg from "../../assets/svg/house.svg";
+import departamentSvg from "../../assets/svg/departaments.svg";
+import landSvg from "../../assets/svg/land.svg";
+import calculatorSvg from "../../assets/svg/Accountant-rafiki.svg";
+import homeWave from "../../assets/svg/home-wave.svg";
 
 export default function Tasador() {
   const [data, setData] = useState({
@@ -35,7 +40,8 @@ export default function Tasador() {
     setData({ ...data, tipo: tipo });
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
     // Envia datos del formulario
   };
 
@@ -51,23 +57,26 @@ export default function Tasador() {
               onClick={() => handleType("Casa")}
               type="button"
             >
-              Casa
+              <img src={houseSvg} alt="casa" />
+              <span>Casa</span>
             </button>
             <button
               className={data.tipo === "Departamento" ? styles.active : ""}
               onClick={() => handleType("Departamento")}
               type="button"
             >
-              Departamento
+              <img src={departamentSvg} alt="departamento" />
+              <span>Departamento</span>
             </button>
             <button
               className={data.tipo === "Terreno" ? styles.active : ""}
               onClick={() => handleType("Terreno")}
               type="button"
             >
-              Terrenos
+              <img src={landSvg} alt="terreno" />
+              <span>Terreno</span>
             </button>
-          </div>{" "}
+          </div>
           <Input
             name="direccion"
             label="Direccion"
@@ -128,11 +137,17 @@ export default function Tasador() {
             value={data.telefono}
             onChange={handleChange}
           />
-          <button className="btn btn-primary" type="submit">
+          <button className="btn btn-secundary" type="submit">
             Calcular
           </button>
         </form>
+        <img
+          className={styles.imageCalculator}
+          src={calculatorSvg}
+          alt="calculator"
+        />
       </div>
+      <img className={styles.wave} src={homeWave} alt="wave" />
       <Footer blue={true} />
     </div>
   );
