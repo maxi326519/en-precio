@@ -1,9 +1,10 @@
 export interface User {
   id?: string;
   name: string;
+  surName: string;
   email: string;
-  photo: string;
-  phone: string;
+  photo?: string;
+  phone?: string;
 }
 
 export interface UserError {
@@ -15,6 +16,7 @@ export interface UserError {
 
 export const initUser = (): User => ({
   name: "",
+  surName: "",
   email: "",
   photo: "",
   phone: "",

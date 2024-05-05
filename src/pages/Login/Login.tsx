@@ -1,34 +1,22 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import {
+  Login as LoginTS,
+  LoginError,
+  initLogin,
+  initLoginError,
+} from "../../interfaces/Sesion";
+import useSesion from "../../hooks/useSesion";
 
 import styles from "./Login.module.css";
 import logo from "../../assets/img/logo.png";
 import homeWave from "../../assets/svg/home-wave.svg";
 
-interface LoginData {
-  email: string;
-  password: string;
-}
-
-interface Error {
-  email: string;
-  password: string;
-}
-
-const initLoginData = (): LoginData => ({
-  email: "",
-  password: "",
-});
-
-const initError = (): Error => ({
-  email: "",
-  password: "",
-});
-
 export default function Login() {
   const redirect = useNavigate();
-  const [error, setError] = useState(initError());
-  const [user, setUser] = useState(initLoginData());
+  const session = useSesion();
+  const [error, setError] = useState<LoginError>(initLoginError());
+  const [user, setUser] = useState<LoginTS>(initLogin());
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>): void {
     // Set data
@@ -39,33 +27,44 @@ export default function Login() {
   }
 
   function handleValidations() {
-    const error: Error = initError(); // Inputs errors
+    const error: LoginError = initLoginError(); // Inputs errors
     let value = true; // If there are no errors it's true, else it's false
 
     // Email
-    if (error.email === "") {
+    if (user.email === "") {
       error.email = "Debes agregar un correo";
       value = false;
-    } // Add more validations
+    }
 
     // Password
-    if (error.password === "") {
+    if (user.password === "") {
       error.password = "Debes agregar una contraseña";
       value = false;
-    } // Add more validations
-
-    value = true;
+    }
 
     // Set error and return the value
-    // setError(error);
+    setError(error);
     return value;
   }
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>): void {
     event.preventDefault();
     if (handleValidations()) {
-      // Login code
-      redirect("/");
+      session
+        .login(user)
+        .then(() => redirect("/"))
+        .catch((e: Error) => {
+          console.log(e);
+          if (e.message.includes("user-not-found")) {
+            setError({
+              ...error,
+              email: "No se encontró usuario con ese email",
+            });
+          }
+          if (e.message.includes("auth/wrong-password")) {
+            setError({ ...error, password: "La contraseña es incorrecta" });
+          }
+        });
     }
   }
 

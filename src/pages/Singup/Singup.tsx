@@ -1,112 +1,94 @@
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import {
+  initSingup,
+  initSingupError,
+  Singup as SingupTS,
+  SingupError,
+} from "../../interfaces/Sesion";
 
 import styles from "./Singup.module.css";
 import logo from "../../assets/img/logo.png";
 import homeWave from "../../assets/svg/home-wave.svg";
-import { Link, useNavigate } from "react-router-dom";
-
-interface SingupData {
-  name: string;
-  surname: string;
-  email: string;
-  phone: string;
-  password: string;
-  repeatPassword: string;
-}
-
-interface Error {
-  name: string;
-  surname: string;
-  email: string;
-  phone: string;
-  password: string;
-  repeatPassword: string;
-}
-
-const initSingupData = (): SingupData => ({
-  name: "",
-  surname: "",
-  email: "",
-  phone: "",
-  password: "",
-  repeatPassword: "",
-});
-
-const initError = (): Error => ({
-  name: "",
-  surname: "",
-  email: "",
-  phone: "",
-  password: "",
-  repeatPassword: "",
-});
+import useSesion from "../../hooks/useSesion";
 
 export default function Singup() {
   const redirect = useNavigate();
-  const [error, setError] = useState(initError());
-  const [user, setUser] = useState(initSingupData());
+  const sesion = useSesion();
+  const [user, setUser] = useState<SingupTS>(initSingup());
+  const [error, setError] = useState<SingupError>(initSingupError());
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>): void {
-    // Set data
-    setUser({ ...user, [e.target.name]: e.target.value });
-
-    // Clean errors
-    setError({ ...error, [e.target.name]: "" });
+    setUser({ ...user, [e.target.name]: e.target.value }); // Set data
+    setError({ ...error, [e.target.name]: "" }); // Clean errors
   }
 
   function handleValidations() {
-    const error: Error = initError(); // Inputs errors
+    const error: SingupError = initSingupError(); // Inputs errors
     let value = true; // If there are no errors it's true, else it's false
 
     // Name
-    if (error.name === "") {
+    if (user.name === "") {
       error.name = "Debes agregar un nombre";
       value = false;
     }
 
     // Surname
-    if (error.surname === "") {
-      error.surname = "Debes agregar un apellido";
+    if (user.surName === "") {
+      error.surName = "Debes agregar un apellido";
       value = false;
     }
 
     // Email
-    if (error.email === "") {
+    if (user.email === "") {
       error.email = "Debes agregar un correo";
       value = false;
     } // Add more validations
 
     // Phone
-    if (error.phone === "") {
-      error.phone = "Debes agregar un numero de telefono";
-      value = false;
-    } // Add more validations
+    // if (user.phone === "") {
+    //   error.phone = "Debes agregar un numero de telefono";
+    //   value = false;
+    // }
 
     // Password
-    if (error.password === "") {
+    if (user.password === "") {
       error.password = "Debes agregar una contraseña";
       value = false;
-    } else if (error.repeatPassword === "") {
+    }
+
+    if (user.repeatPassword === "") {
       error.repeatPassword = "Debes repetir la contraseña";
       value = false;
-    } else if (error.repeatPassword === error.password) {
+    } else if (user.repeatPassword !== user.password) {
       error.password = "La contraseña no coincide";
       error.repeatPassword = "La contraseña no coincide";
       value = false;
     }
 
-    value = true;
-
     // Set error and return the value
-    // setError(error);
+    setError(error);
     return value;
   }
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>): void {
     event.preventDefault();
     if (handleValidations()) {
-      // Singup code
-      redirect("/");
+      sesion
+        .signup(user)
+        .then(() => {
+          redirect("/");
+        })
+        .catch((e: Error) => {
+          console.log(e);
+
+          if (e.message.includes("Password should be at least 6 characters")) {
+            setError({
+              ...error,
+              password: "Debe contener mas de 6 caracteres",
+            });
+          }
+        });
     }
   }
 
@@ -135,16 +117,16 @@ export default function Singup() {
           {/* SURNAME */}
           <div className="form-floating mb-3">
             <input
-              id={error.surname ? "floatingInputInvalid" : "user"}
+              id={error.surName ? "floatingInputInvalid" : "user"}
               type="text"
-              name="surname"
-              value={user.surname}
-              className={`form-control ${!error.surname ? "" : "is-invalid"}`}
+              name="surName"
+              value={user.surName}
+              className={`form-control ${!error.surName ? "" : "is-invalid"}`}
               placeholder="Telefono"
               onChange={handleChange}
             />
             <label htmlFor="floatingInput">Apellido</label>
-            {!error.surname ? null : <small>{error.surname}</small>}
+            {!error.surName ? null : <small>{error.surName}</small>}
           </div>
 
           {/* PHONE */}

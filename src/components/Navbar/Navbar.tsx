@@ -1,7 +1,7 @@
+import { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RootState } from "../../interfaces/ReduxState";
-import { useEffect, useRef, useState } from "react";
 
 import styles from "./Navbar.module.css";
 import logo from "../../assets/img/logo-simple.png";
@@ -11,6 +11,7 @@ import companySvg from "../../assets/svg/menu/company.svg";
 import dashboardSvg from "../../assets/svg/menu/dashboard.svg";
 import logoutSvg from "../../assets/svg/menu/logout.svg";
 import profileSvg from "../../assets/svg/menu/profile.svg";
+import useSesion from "../../hooks/useSesion";
 
 interface Props {
   opaque?: boolean;
@@ -18,6 +19,7 @@ interface Props {
 
 export default function Navbar({ opaque }: Props) {
   const redirect = useNavigate();
+  const sesion = useSesion();
   const [showMenu, setShowMenu] = useState(true);
   const [showProfileMenu, setShowProfileMenu] = useState(false);
   const user = useSelector((state: RootState) => state.user);
@@ -49,8 +51,7 @@ export default function Navbar({ opaque }: Props) {
   }
 
   function handleCloseSesion() {
-    // Logout code
-    redirect("/login");
+    sesion.logout().then(() => redirect("/"));
   }
 
   return (

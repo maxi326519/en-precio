@@ -28,3 +28,7 @@ package-lock.json
 
 # Firebase
 .firebase
+
+# Environment variables
+.env.development
+.env.production

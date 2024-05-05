@@ -16,8 +16,33 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 import Tasador from "./pages/Tasador/Tasador";
+import { useEffect } from "react";
+import { auth } from "./firebase";
+import { useDispatch } from "./interfaces/ReduxState";
+import { openLoading } from "./redux/actions/loading";
+import { getUserData } from "./redux/actions/sesion";
+import swal from "sweetalert";
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    auth.onAuthStateChanged(() => {
+      if (auth.currentUser) {
+        dispatch(openLoading());
+        dispatch(getUserData())
+          .then(() => {
+            dispatch(openLoading());
+          })
+          .catch((e: Error) => {
+            dispatch(openLoading());
+            console.log(e);
+            swal("Error", "No se pudo obtener los datos del usurio", "error");
+          });
+      }
+    });
+  }, []);
+
   return (
     <div className="App">
       <Routes>

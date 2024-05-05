@@ -98,7 +98,7 @@ export default function Profile() {
           <Input
             name="phone"
             label="Telefono"
-            value={user.phone}
+            value={user.phone || ""}
             error={error.phone}
             onChange={handleChange}
             disabled={!edit}

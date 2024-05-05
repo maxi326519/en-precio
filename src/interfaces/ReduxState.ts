@@ -1,7 +1,8 @@
-import { ThunkAction } from "redux-thunk";
-import { AnyAction } from "redux";
-import { initUser, User } from "./User";
+import { useDispatch as useReduxDispatch } from "react-redux";
+import { ThunkAction, ThunkDispatch } from "redux-thunk";
 import { Company, initCompany } from "./Company";
+import { initUser, User } from "./User";
+import { AnyAction } from "redux";
 import { Property } from "./Property";
 
 export type MyThunkAction = ThunkAction<
@@ -10,6 +11,12 @@ export type MyThunkAction = ThunkAction<
   null,
   AnyAction
 >;
+
+// Config Thunk
+export type AppDispatch = ThunkDispatch<RootState, null, AnyAction>;
+export function useDispatch(): AppDispatch {
+  return useReduxDispatch<AppDispatch>();
+}
 
 export type UserState = User;
 export type CompanyState = Company;
