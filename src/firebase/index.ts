@@ -24,9 +24,9 @@ const functions = getFunctions(app);
 // Emulator
 if (import.meta.env.VITE_EMULATOR === "true") {
   console.log("Emulator running");
-  connectAuthEmulator(auth, "http://localhost:9099");
-  connectFirestoreEmulator(db, "localhost", 8085);
-  connectFunctionsEmulator(functions, "localhost", 5001);
+  connectAuthEmulator(auth, "http://localhost:9090");
+  connectFirestoreEmulator(db, "localhost", 8080);
+  connectFunctionsEmulator(functions, "localhost", 5000);
 }
 
 export { app, auth, db, storage };

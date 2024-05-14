@@ -27,6 +27,7 @@ export type DashboardState = {
 };
 
 export interface RootState {
+  loading: boolean;
   user: UserState;
   company: CompanyState;
   property: Property[];

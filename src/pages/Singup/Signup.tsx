@@ -6,11 +6,12 @@ import {
   Singup as SingupTS,
   SingupError,
 } from "../../interfaces/Sesion";
+import useSesion from "../../hooks/useSesion";
 
 import styles from "./Singup.module.css";
 import logo from "../../assets/img/logo.png";
 import homeWave from "../../assets/svg/home-wave.svg";
-import useSesion from "../../hooks/useSesion";
+import swal from "sweetalert";
 
 export default function Singup() {
   const redirect = useNavigate();
@@ -43,13 +44,7 @@ export default function Singup() {
     if (user.email === "") {
       error.email = "Debes agregar un correo";
       value = false;
-    } // Add more validations
-
-    // Phone
-    // if (user.phone === "") {
-    //   error.phone = "Debes agregar un numero de telefono";
-    //   value = false;
-    // }
+    }
 
     // Password
     if (user.password === "") {
@@ -80,13 +75,13 @@ export default function Singup() {
           redirect("/");
         })
         .catch((e: Error) => {
-          console.log(e);
-
           if (e.message.includes("Password should be at least 6 characters")) {
             setError({
               ...error,
               password: "Debe contener mas de 6 caracteres",
             });
+          } else {
+            swal("Error", "Error al registrarse", "error");
           }
         });
     }

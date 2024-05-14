@@ -1,7 +1,11 @@
 {
   "hosting": {
     "public": "dist",
-    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
     "rewrites": [
       {
         "source": "**",
@@ -19,6 +23,20 @@
     },
     "function": {
       "port": 5000
-    }
+    },
+    "hosting": {
+      "port": 5000
+    },
+    "storage": {
+      "port": 9200,
+      "rules": "./src/firebase/storage.rules"
+    },
+    "ui": {
+      "enabled": true
+    },
+    "singleProjectMode": true
+  },
+  "storage": {
+    "rules": "storage.rules"
   }
 }

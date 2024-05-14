@@ -1,4 +1,4 @@
-import loading from "../../assets/img/loading.gif";
+import loading from "../../assets/gift/loading.gif";
 
 import "./Loading.css";
 

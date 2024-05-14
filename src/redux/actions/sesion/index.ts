@@ -1,8 +1,6 @@
 import { collection, doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
-import { AppDispatch, RootState } from "../../../interfaces/ReduxState";
 import { Login, Singup } from "../../../interfaces/Sesion";
-import { ThunkAction } from "redux-thunk";
-import { AnyAction } from "redux";
+import { AppDispatch } from "../../../interfaces/ReduxState";
 import { auth, db } from "../../../firebase";
 import { User } from "../../../interfaces/User";
 import {
@@ -37,6 +35,7 @@ export function signUp(user: Singup) {
       const newUser: User = {
         name: user.name,
         surName: user.surName,
+        phone: user.phone,
         photo: "",
         email: user.email,
       };
@@ -91,12 +90,7 @@ export function logIn(userData: Login) {
   };
 }
 
-export function logOut(): ThunkAction<
-  Promise<void>,
-  RootState,
-  null,
-  AnyAction
-> {
+export function logOut() {
   return async (dispatch: AppDispatch) => {
     try {
       await signOut(auth);
@@ -113,12 +107,7 @@ export function logOut(): ThunkAction<
   };
 }
 
-export function getUserData(): ThunkAction<
-  Promise<void>,
-  RootState,
-  null,
-  AnyAction
-> {
+export function getUserData() {
   return async (dispatch: AppDispatch) => {
     try {
       const colUser = collection(db, "Users");
@@ -143,11 +132,33 @@ export function getUserData(): ThunkAction<
   };
 }
 
+export function updateUser(user: User) {
+  return async (dispatch: AppDispatch) => {
+    try {
+      // Check auth user
+      if (!auth.currentUser) throw new Error("User not logued");
+
+      // Log user and update your password
+      await updateDoc(doc(userColl, user.id), { ...user });
+
+      dispatch({
+        type: CHANGE_PASSWORD,
+      });
+    } catch (e: unknown) {
+      if (e instanceof Error) {
+        throw new Error(e.message);
+      } else {
+        throw new Error("An unknown error occurred");
+      }
+    }
+  };
+}
+
 export function changePassword(
   newPassword: string,
   curretnPassword: string,
   user: User
-): ThunkAction<Promise<void>, RootState, null, AnyAction> {
+) {
   return async (dispatch: AppDispatch) => {
     try {
       // Check auth user
@@ -174,7 +185,7 @@ export function changeEmail(
   newEmail: string,
   curretnPassword: string,
   user: User
-): ThunkAction<Promise<void>, RootState, null, AnyAction> {
+) {
   return async (dispatch: AppDispatch) => {
     try {
       // Check auth user

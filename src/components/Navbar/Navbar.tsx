@@ -88,14 +88,14 @@ export default function Navbar({ opaque }: Props) {
             <Link to="/form">Contacto</Link>
           </li>
         </ul>
-        {user ? (
+        {user.id ? (
           <div
             className={`${styles.profile} ${showMenu && styles.showProfile}`}
             ref={dropdownRef}
           >
             <div className={styles.data} onClick={handleShowProfileMenu}>
               <img src={user.photo || userSvg} alt="user" />
-              <span>Maximiliano</span>
+              <span>{user.name}</span>
             </div>
             <ul
               className={`${styles.profileMenu} ${
@@ -132,7 +132,7 @@ export default function Navbar({ opaque }: Props) {
               <Link to="/login">Iniciar sesión</Link>
             </li>
             <li>
-              <Link to="/signin">Registrarse</Link>
+              <Link to="/singup">Registrarse</Link>
             </li>
           </ul>
         )}
