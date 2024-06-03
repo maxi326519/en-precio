@@ -1,4 +1,5 @@
 import { LOGIN, LOGOUT, SIGN_IN, UPDATE_EMAIL } from "../../actions/sesion";
+import { CREATE_COMPANY } from "../../actions/company";
 import { initUserState } from "../../../interfaces/ReduxState";
 import { AnyAction } from "redux";
 
@@ -14,6 +15,12 @@ export const UserReducer = (state = initUserState(), action: AnyAction) => {
       return {
         ...state,
         email: action.payload,
+      };
+
+    case CREATE_COMPANY:
+      return {
+        ...state,
+        companyId: action.payload.id,
       };
 
     case LOGOUT:

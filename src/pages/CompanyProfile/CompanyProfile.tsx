@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RootState } from "../../interfaces/ReduxState";
 import {
@@ -7,8 +8,8 @@ import {
   Company,
   CompanyError,
 } from "../../interfaces/Company";
+import useCompany from "../../hooks/useCompany";
 
-import swal from "sweetalert";
 import Input from "../../components/Inputs/Input";
 import Navbar from "../../components/Navbar/Navbar";
 import ImgInput from "../../components/ImgInput/ImgInput";
@@ -17,35 +18,50 @@ import styles from "./CompanyProfile.module.css";
 import logoSvg from "../../assets/svg/logo.svg";
 
 export default function CompanyProfile() {
-  const company = useSelector((state: RootState) => state.company);
-  const [companyEdit, setCompanyEdit] = useState<Company>(initCompany());
+  const redirect = useNavigate();
+  const company = useCompany();
+  const user = useSelector((state: RootState) => state.user);
+  const [companyData, setCompanyEdit] = useState<Company>(initCompany());
   const [error, setError] = useState<CompanyError>(initCompanyError());
   const [edit, setEdit] = useState<boolean>(false);
-  const [file, setFile] = useState<File | null>(null);
+  const [file, setFile] = useState<File | undefined>();
 
+  // Set data to edit
   useEffect(() => {
-    setCompanyEdit(company);
-  }, [company]);
+    setCompanyEdit(company.data);
+  }, [company.data]);
+
+  // Set edit in true to enable input to create a new Company
+  useEffect(() => {
+    setEdit(!user.companyId);
+  }, [user]);
+
+  // useEffect(() => {
+  //   console.log(companyData);
+  // }, [companyData]);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
-    if (name !== "email") setCompanyEdit({ ...companyEdit, [name]: value }); // Don't save the email
+    setCompanyEdit({ ...companyData, [name]: value });
   };
 
-  const handleEdit = () => {
-    setEdit(!edit);
-    setCompanyEdit(company);
-    setFile(null);
+  const handleToggleEdit = () => {
+    if (user.companyId) {
+      // If company already exist, enable inputs
+      setEdit(!edit);
+      setCompanyEdit(company.data);
+      setFile(undefined);
+    } else {
+      // If don't exist, redirect to landing
+      redirect("/");
+    }
   };
 
-  const handleSubmit = (event: React.FormEvent) => {
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-
     if (handelValidations()) {
-      // Code to send data to update company
-      console.log(file); // Upload file
-      swal("Guardado", "Se editó tu usuario correctamente", "success");
-      handleEdit();
+      await company.set(companyData, file);
+      handleToggleEdit();
     }
   };
 
@@ -53,17 +69,12 @@ export default function CompanyProfile() {
     const errors: CompanyError = initCompanyError();
     let value = true;
 
-    if (companyEdit.name) {
+    if (companyData.name === "") {
       errors.name = "Debes completar este campo";
       value = false;
     }
 
-    if (companyEdit.photo) {
-      errors.photo = "Debes completar este campo";
-      value = false;
-    }
-
-    if (companyEdit.adress) {
+    if (companyData.adress === "") {
       errors.adress = "Debes completar este campo";
       value = false;
     }
@@ -82,7 +93,7 @@ export default function CompanyProfile() {
           <Input
             name="name"
             label="Nombre"
-            value={company.name}
+            value={companyData.name}
             error={error.name}
             onChange={handleChange}
             disabled={!edit}
@@ -90,7 +101,7 @@ export default function CompanyProfile() {
           <Input
             name="phone"
             label="Telefono"
-            value={company.phone}
+            value={companyData.phone}
             error={error.phone}
             onChange={handleChange}
             disabled={!edit}
@@ -98,7 +109,7 @@ export default function CompanyProfile() {
           <Input
             name="adress"
             label="Direccion"
-            value={company.adress}
+            value={companyData.adress}
             error={error.adress}
             onChange={handleChange}
             disabled={!edit}
@@ -106,7 +117,7 @@ export default function CompanyProfile() {
           <Input
             name="email"
             label="Correo"
-            value={company.email}
+            value={companyData.email}
             error={error.email}
             onChange={handleChange}
             disabled={!edit}
@@ -124,7 +135,7 @@ export default function CompanyProfile() {
             <button
               className="btn btn-outline-primary"
               type="button"
-              onClick={handleEdit}
+              onClick={handleToggleEdit}
             >
               Cancelar
             </button>
@@ -134,9 +145,9 @@ export default function CompanyProfile() {
             <button
               className="btn btn-primary"
               type="button"
-              onClick={handleEdit}
+              onClick={handleToggleEdit}
             >
-              Editar
+              {user.companyId ? "Editar" : "Crear"}
             </button>
           </div>
         )}

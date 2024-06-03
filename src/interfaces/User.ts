@@ -5,6 +5,7 @@ export interface User {
   email: string;
   photo?: string;
   phone?: string;
+  companyId?: string;
 }
 
 export interface UserError {

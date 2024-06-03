@@ -1,6 +1,6 @@
+import { closeLoading, openLoading } from "./redux/actions/loading";
 import { RootState, useDispatch } from "./interfaces/ReduxState";
 import { Route, Routes } from "react-router-dom";
-import { openLoading } from "./redux/actions/loading";
 import { getUserData } from "./redux/actions/sesion";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
@@ -35,10 +35,10 @@ function App() {
         dispatch(openLoading());
         dispatch(getUserData())
           .then(() => {
-            dispatch(openLoading());
+            dispatch(closeLoading());
           })
           .catch((e: Error) => {
-            dispatch(openLoading());
+            dispatch(closeLoading());
             console.log(e);
             swal("Error", "No se pudo obtener los datos del usurio", "error");
           });

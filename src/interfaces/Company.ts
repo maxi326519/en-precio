@@ -7,6 +7,7 @@ export interface Company {
   photo: string;
   owners: string[];
   employees: string[];
+  enabled: boolean;
 }
 
 export interface CompanyError {
@@ -27,6 +28,7 @@ export const initCompany = (): Company => ({
   photo: "",
   owners: [],
   employees: [],
+  enabled: true,
 });
 
 export const initCompanyError = (): CompanyError => ({

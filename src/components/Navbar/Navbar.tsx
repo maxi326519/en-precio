@@ -111,15 +111,19 @@ export default function Navbar({ opaque }: Props) {
               <li>
                 <Link to="/realState">
                   <img src={companySvg} alt="companySvg" />
-                  <span>Inmobiliaria</span>
+                  <span>
+                    {user.companyId ? "Inmobiliaria" : "Crear inmobiliaria"}
+                  </span>
                 </Link>
               </li>
-              <li>
-                <Link to="/dashboard">
-                  <img src={dashboardSvg} alt="dashboardSvg" />
-                  <span>Dashboard</span>
-                </Link>
-              </li>
+              {user.companyId && (
+                <li>
+                  <Link to="/dashboard">
+                    <img src={dashboardSvg} alt="dashboardSvg" />
+                    <span>Dashboard</span>
+                  </Link>
+                </li>
+              )}
               <li onClick={handleCloseSesion}>
                 <img src={logoutSvg} alt="logoutSvg" />
                 <span>Cerrar sesión</span>
