@@ -36,20 +36,22 @@ export default function Step2({
       <Steps step={2} />
       <form className={styles.form} onSubmit={onNext}>
         <div className={styles.flex}>
-          <Input
-            name="predisposicion"
-            label="Predisposicion"
-            value={property.predisposicion}
-            error={error.predisposicion}
-            onChange={handleChange}
-          />
-          <Input
-            name="orientacion"
-            label="Orientacion"
-            value={property.orientacion}
-            error={error.orientacion}
-            onChange={handleChange}
-          />
+          <div className={styles.firstInputs}>
+            <Input
+              name="predisposicion"
+              label="Predisposicion"
+              value={property.predisposicion}
+              error={error.predisposicion}
+              onChange={handleChange}
+            />
+            <Input
+              name="orientacion"
+              label="Orientacion"
+              value={property.orientacion}
+              error={error.orientacion}
+              onChange={handleChange}
+            />
+          </div>
           <div className={styles.checkGrid}>
             <Checkbox
               name="profecionales"
@@ -260,10 +262,14 @@ export default function Step2({
             />
           </div>
           <div className={styles.btnContainer}>
-            <button type="button" className="btn btn-success" onClick={onBack}>
+            <button
+              type="button"
+              className="btn btn-outline-primary"
+              onClick={onBack}
+            >
               Volver
             </button>
-            <button type="submit" className="btn btn-success">
+            <button type="submit" className="btn btn-primary">
               Continuar
             </button>
           </div>

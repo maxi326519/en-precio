@@ -1,0 +1,33 @@
+.imgSelector {
+  display: grid;
+  grid-template-columns: repeat(3, 250px);
+  grid-template-rows: repeat(2, 190px);
+  gap: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+.imgSelector div:first-child {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.imgSelector div:first-child:hover {
+  box-shadow: 0 0 5px 2px #4441;
+}
+
+.flex h3 {
+  margin-top: 20px;
+}
+
+.btnContainer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 10px;
+}

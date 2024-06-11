@@ -59,7 +59,7 @@ export default function PropertyForm({ data, onClose, onSubmit }: Props) {
         <Step2
           property={property}
           error={error}
-          onBack={() => handleSetStep(2)}
+          onBack={() => handleSetStep(1)}
           onNext={() => handleSetStep(3)}
           onChange={handleChange}
         />
@@ -68,7 +68,7 @@ export default function PropertyForm({ data, onClose, onSubmit }: Props) {
         <Step3
           property={property}
           error={error}
-          onBack={() => handleSetStep(3)}
+          onBack={() => handleSetStep(2)}
           onNext={() => handleSetStep(4)}
           onChange={handleChange}
         />
@@ -77,7 +77,7 @@ export default function PropertyForm({ data, onClose, onSubmit }: Props) {
         <Step4
           property={property}
           error={error}
-          onBack={() => handleSetStep(4)}
+          onBack={() => handleSetStep(3)}
           onChange={handleChange}
           onSubmit={handleSubmit}
         />

@@ -18,7 +18,13 @@ interface Props {
   onChange: (property: Property, error: PropertyError) => void;
 }
 
-export default function Step1({ property, error, onNext, onChange }: Props) {
+export default function Step1({
+  property,
+  error,
+  onCancel,
+  onNext,
+  onChange,
+}: Props) {
   // Change property data
   function handleChange(
     event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -107,11 +113,15 @@ export default function Step1({ property, error, onNext, onChange }: Props) {
         />
       </div>
       <div className={styles.btnContainer}>
+        <button
+          type="button"
+          className="btn btn-outline-primary"
+          onClick={onCancel}
+        >
+          Cancelar
+        </button>
         <button type="submit" className="btn btn-primary">
           Continuar
-        </button>
-        <button type="submit" className="btn btn-outline-primary">
-          Cancelar
         </button>
       </div>
     </form>

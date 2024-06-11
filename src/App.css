@@ -20,7 +20,7 @@
 
 /* PRIMARY BUTTON */
 .btn-primary {
-  padding: 10px 20px !important;
+  padding: 20px 10px !important;
   color: white !important;
   background-color: var(--primary-color) !important;
 }
@@ -31,7 +31,7 @@
 }
 
 .btn-outline-primary {
-  padding: 10px 20px !important;
+  padding: 20px 10px !important;
   color: var(--primary-color) !important;
   border-color: var(--primary-color) !important;
 }

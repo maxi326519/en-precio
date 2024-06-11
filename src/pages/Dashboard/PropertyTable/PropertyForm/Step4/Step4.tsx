@@ -36,30 +36,29 @@ export default function Step4({
       <form className={styles.form} onSubmit={onSubmit}>
         <div className={styles.flex}>
           <Input
-            name="date"
-            label="Fecha"
-            type="date"
+            name="titulo"
+            label="Titulo"
             value={property.titulo}
             error={error.titulo}
             onChange={handleChange}
           />
           <TextAreaInput
-            name="date"
-            label="Fecha"
-            value={property.titulo}
-            error={error.titulo}
+            name="description"
+            label="Descripcion"
+            value={property.descripcion}
+            error={error.descripcion}
             onChange={handleChange}
           />
           <div className={styles.btnContainer}>
-            <button type="submit" className="btn btn-success" onClick={onBack}>
+            <button
+              type="button"
+              className="btn btn-outline-primary"
+              onClick={onBack}
+            >
               Volver
             </button>
-            <button
-              type="submit"
-              className="btn btn-success"
-              onClick={onSubmit}
-            >
-              Continuar
+            <button type="submit" className="btn btn-primary">
+              Publicar
             </button>
           </div>
         </div>

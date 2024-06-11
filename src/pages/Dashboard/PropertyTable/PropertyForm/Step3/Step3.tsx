@@ -34,7 +34,9 @@ export default function Step3({
     <div>
       <Steps step={3} />
       <form className={styles.form} onSubmit={onNext}>
-        <div className={styles.imgs}></div>
+        <div className={styles.imgSelector}>
+          <div>+</div>
+        </div>
         <div className={styles.flex}>
           <h3>Video</h3>
           <Input
@@ -54,10 +56,14 @@ export default function Step3({
           />
         </div>
         <div className={styles.btnContainer}>
-          <button type="submit" className="btn btn-success" onClick={onBack}>
+          <button
+            type="button"
+            className="btn btn-outline-primary"
+            onClick={onBack}
+          >
             Volver
           </button>
-          <button type="submit" className="btn btn-success" onClick={onNext}>
+          <button type="submit" className="btn btn-primary">
             Continuar
           </button>
         </div>
